@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import RelatedLinks from "../../components/RelatedLinks.astro";
+---
+<BaseLayout title="地方公務員の経験を民間で活かす">
+<article class="container article">
+<h1>地方公務員の経験を民間で活かす</h1>
+
+<p>行政経験を共通スキルと専門スキルに分解し、民間での選択肢を考えます。</p>
+
+<RelatedLinks links={[
+ {url:"/articles/skill-map/", title:"行政経験から探す"},
+ {url:"/articles/career-options/", title:"民間職種から探す"},
+ {url:"/services/", title:"転職サービス比較"}
+]} />
+
+<CTA />
+</article>
+</BaseLayout>

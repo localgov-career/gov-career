@@ -1,37 +1,47 @@
 ---
-const { category = "" } = Astro.props;
+const { category = "common" } = Astro.props;
 
-const links = {
+const map = {
   health: [
-    {url:"/articles/career-healthcare/", title:"ヘルスケア企業への転職"},
-    {url:"/articles/department-health/", title:"保健・健康部門の記事"},
-    {url:"/services/", title:"転職サービス比較"}
+    ["/articles/department-health/","保健・健康部門の記事"],
+    ["/articles/career-healthcare/","ヘルスケア企業への転職"],
+    ["/services/","転職サービス比較"]
+  ],
+  welfare: [
+    ["/articles/department-welfare/","福祉部門の記事"],
+    ["/articles/career-customer-success/","カスタマーサクセスへの転職"],
+    ["/services/","転職サービス比較"]
   ],
   tax: [
-    {url:"/articles/career-consulting/", title:"コンサルへの転職"},
-    {url:"/articles/department-tax/", title:"税務・徴収部門の記事"},
-    {url:"/services/", title:"転職サービス比較"}
+    ["/articles/department-tax/","税務・徴収部門の記事"],
+    ["/articles/career-consulting/","コンサルへの転職"],
+    ["/services/","転職サービス比較"]
+  ],
+  finance: [
+    ["/articles/department-finance-accounting/","財務・会計部門の記事"],
+    ["/articles/career-planning/","事業企画への転職"],
+    ["/services/","転職サービス比較"]
   ],
   dx: [
-    {url:"/articles/career-dx/", title:"DX推進職への転職"},
-    {url:"/articles/department-digital/", title:"情報・DX部門の記事"},
-    {url:"/services/", title:"転職サービス比較"}
+    ["/articles/department-digital/","情報・DX部門の記事"],
+    ["/articles/career-dx/","DX推進職への転職"],
+    ["/services/","転職サービス比較"]
   ],
   common: [
-    {url:"/articles/skill-map/", title:"行政経験から探す"},
-    {url:"/articles/career-options/", title:"職種から探す"},
-    {url:"/services/", title:"転職サービス比較"}
+    ["/articles/skill-map/","行政経験から探す"],
+    ["/articles/career-options/","職種から探す"],
+    ["/services/","転職サービス比較"]
   ]
 };
 
-const related = links[category] ?? links.common;
+const links = map[category] || map.common;
 ---
 
 <section class="related-links">
 <h2>次に読む</h2>
 <div class="grid-list">
-{related.map((item) => (
-<a href={item.url}><b>{item.title}</b><span>読む →</span></a>
+{links.map(([url,title]) => (
+<a href={url}><b>{title}</b><span>読む →</span></a>
 ))}
 </div>
 </section>

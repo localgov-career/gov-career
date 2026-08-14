@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-const { title, description = "地方公務員から民間企業への転職に特化したキャリア情報サイト" } = Astro.props;
+const { title, description = "地方公務員から民間企業への転職情報サイト" } = Astro.props;
 ---
 <!doctype html>
 <html lang="ja">
@@ -9,29 +9,29 @@ const { title, description = "地方公務員から民間企業への転職に�
   <meta name="viewport" content="width=device-width" />
   <title>{title} | 地方公務員キャリア</title>
   <meta name="description" content={description} />
-  <meta property="og:title" content={`${title} | 地方公務員キャリア`} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="/">地方公務員<span>キャリア</span></a>
-      <nav>
-        <a href="/articles/local-government-to-private">地方公務員→民間</a>
-        <a href="/articles/city-hall-to-private">市役所→民間</a>
-        <a href="/articles/local-government-30s">30代</a>
-        <a href="/articles/local-government-40s">40代</a>
-        <a href="/services">転職サービス比較</a>
-      </nav>
-    </div>
-  </header>
-  <main><slot /></main>
-  <footer>
-    <div class="container footer-inner">
-      <div><strong>地方公務員キャリア</strong><p>地方公務員から民間企業への転職を考える人のための情報メディア。</p></div>
-      <div class="small">当サイトはアフィリエイトプログラムを利用しています。掲載情報は各サービスの公式情報等をもとに作成しています。</div>
-    </div>
-  </footer>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="/">地方公務員<span>キャリア</span></a>
+    <nav>
+      <a href="/articles/behavioral-economics/">転職を考える前に</a>
+      <a href="/articles/skill-map/">行政経験から探す</a>
+      <a href="/articles/career-options/">職種から探す</a>
+      <a href="/services/">転職サービス比較</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <slot />
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <strong>地方公務員キャリア</strong>
+    <p>行政経験を民間キャリアへ変換するための情報サイト。</p>
+  </div>
+</footer>
 </body>
 </html>

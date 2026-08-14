@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
+
+const { title, category, lead } = Astro.props;
+---
+<BaseLayout title={title}>
+<article class="container article">
+<p class="eyebrow">CAREER</p>
+<h1>{title}</h1>
+<p class="lead">{lead}</p>
+
+<slot />
+
+<RelatedLinksAuto category={category} />
+
+<CTA />
+</article>
+</BaseLayout>

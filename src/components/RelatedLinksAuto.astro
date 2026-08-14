@@ -1,0 +1,37 @@
+---
+const { category = "" } = Astro.props;
+
+const links = {
+  health: [
+    {url:"/articles/career-healthcare/", title:"ヘルスケア企業への転職"},
+    {url:"/articles/department-health/", title:"保健・健康部門の記事"},
+    {url:"/services/", title:"転職サービス比較"}
+  ],
+  tax: [
+    {url:"/articles/career-consulting/", title:"コンサルへの転職"},
+    {url:"/articles/department-tax/", title:"税務・徴収部門の記事"},
+    {url:"/services/", title:"転職サービス比較"}
+  ],
+  dx: [
+    {url:"/articles/career-dx/", title:"DX推進職への転職"},
+    {url:"/articles/department-digital/", title:"情報・DX部門の記事"},
+    {url:"/services/", title:"転職サービス比較"}
+  ],
+  common: [
+    {url:"/articles/skill-map/", title:"行政経験から探す"},
+    {url:"/articles/career-options/", title:"職種から探す"},
+    {url:"/services/", title:"転職サービス比較"}
+  ]
+};
+
+const related = links[category] ?? links.common;
+---
+
+<section class="related-links">
+<h2>次に読む</h2>
+<div class="grid-list">
+{related.map((item) => (
+<a href={item.url}><b>{item.title}</b><span>読む →</span></a>
+))}
+</div>
+</section>

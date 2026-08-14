@@ -2,55 +2,45 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
 ---
-<BaseLayout title="地方公務員から民間企業への転職" description="市役所・県庁などの地方公務員から民間企業への転職を考える人のための情報サイト。">
-
+<BaseLayout title="地方公務員から民間企業への転職">
 <section class="hero">
-  <div class="container">
-    <p class="eyebrow">LOCAL GOVERNMENT → PRIVATE</p>
-    <h1>地方公務員から民間企業へ。<br /><span>転職を、もっと具体的に。</span></h1>
-    <p class="lead">市役所・県庁などで培った経験を、民間企業でどう活かすのか。年齢・部門・スキルから整理します。</p>
-    <a class="button" href="/articles/local-government-to-private">まず転職の全体像を見る</a>
-  </div>
+<div class="container">
+<p class="eyebrow">LOCAL GOVERNMENT CAREER</p>
+<h1>地方公務員の経験を、<br />民間企業で活かす。</h1>
+<p class="lead">行政経験をスキルと部門から整理し、あなたに合った民間キャリアの可能性を探します。</p>
+<a class="button" href="/articles/skill-map/">行政経験から転職先を探す</a>
+</div>
 </section>
 
 <section class="container section">
-  <div class="section-head">
-    <p class="eyebrow">SKILL MAP</p>
-    <h2>あなたの行政経験から、転職先を探す</h2>
-  </div>
-  <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:24px;">
-    <div>
-      <h3>行政経験を「共通スキル × 専門スキル」で分解する</h3>
-      <p>企画、調整、業務改善、データ活用などの共通スキルと、税務・福祉・保健・土木などの専門スキルを掛け合わせて、民間で活かせる仕事を探します。</p>
-    </div>
-    <a class="button" href="/articles/skill-map/">行政経験から探す</a>
-  </div>
+<div class="section-head">
+<p class="eyebrow">HOW TO USE</p>
+<h2>あなたの経験から探す</h2>
+</div>
+<div class="grid-list">
+<a href="/articles/skill-map/"><b>行政経験をスキルから探す</b><span>共通スキル×専門スキル</span></a>
+<a href="/articles/department-planning-policy"><b>企画・政策</b><span>企画・コンサル・公共政策</span></a>
+<a href="/articles/department-finance-accounting"><b>財務・会計</b><span>財務・経営管理・経理</span></a>
+<a href="/articles/department-tax"><b>税務・徴収</b><span>金融・審査・債権管理</span></a>
+<a href="/articles/department-welfare"><b>福祉</b><span>福祉・人材・ヘルスケア</span></a>
+<a href="/articles/department-health"><b>保健・健康</b><span>ヘルスケア・健康経営</span></a>
+<a href="/articles/department-education"><b>教育</b><span>教育サービス・EdTech</span></a>
+<a href="/articles/department-environment"><b>環境</b><span>環境ビジネス・ESG</span></a>
+<a href="/articles/department-civil-engineering"><b>土木・建築</b><span>建設・インフラ</span></a>
+<a href="/articles/department-digital"><b>情報・DX</b><span>IT企画・DX推進</span></a>
+</div>
 </section>
 
 <section class="container section">
-  <div class="section-head"><p class="eyebrow">START HERE</p><h2>まず知りたいこと</h2></div>
-  <div class="cards">
-    <a class="card" href="/articles/city-hall-to-private"><small>CASE</small><h3>市役所から民間へ</h3><p>自治体での経験を民間企業の職種にどう置き換えるか。</p></a>
-    <a class="card" href="/articles/local-government-30s"><small>AGE</small><h3>30代地方公務員</h3><p>年齢・経験・年収を踏まえた転職の考え方。</p></a>
-    <a class="card" href="/articles/local-government-40s"><small>AGE</small><h3>40代地方公務員</h3><p>管理職経験や専門性を含めたキャリアの作り方。</p></a>
-  </div>
+<div class="section-head">
+<p class="eyebrow">FIRST STEP</p>
+<h2>まず知ることから始める</h2>
+</div>
+<p>転職を決める必要はありません。まず、自分の経験が民間市場でどのように評価されるかを確認することから始めます。</p>
+<a class="button" href="/articles/why-public-servants-dont-change">転職したくても動けない理由を見る</a>
 </section>
 
 <section class="container section">
-  <div class="section-head"><p class="eyebrow">CAREER PATH</p><h2>転職先の選択肢</h2></div>
-  <div class="grid-list">
-    <a href="/articles/department-planning-policy"><b>企画・政策</b><span>企画・コンサル・公共政策</span></a>
-    <a href="/articles/department-general-affairs-hr"><b>総務・人事</b><span>人事・労務・総務</span></a>
-    <a href="/articles/department-tax"><b>税務・徴収</b><span>審査・金融・債権管理など</span></a>
-    <a href="/articles/department-welfare"><b>福祉</b><span>福祉・人材・ヘルスケアなど</span></a>
-    <a href="/articles/department-health"><b>保健・健康</b><span>ヘルスケア・健康経営など</span></a>
-    <a href="/articles/department-civil-engineering"><b>土木・建築</b><span>建設・不動産・インフラなど</span></a>
-    <a href="/articles/department-resident-registration"><b>戸籍・住民</b><span>行政DX・BPO・本人確認など</span></a>
-  </div>
+<CTA />
 </section>
-
-<section class="container section">
-  <CTA />
-</section>
-
 </BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTA from "../components/CTA.astro";
+---
+<BaseLayout title="地方公務員から民間企業への転職" description="市役所・県庁などの地方公務員から民間企業への転職を考える人のための情報サイト。">
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">LOCAL GOVERNMENT → PRIVATE</p>
+    <h1>地方公務員から民間企業へ。<br /><span>転職を、もっと具体的に。</span></h1>
+    <p class="lead">市役所・県庁などで培った経験を、民間企業でどう活かすのか。年齢・職種・転職先ごとに整理します。</p>
+    <a class="button" href="/articles/local-government-to-private">まず転職の全体像を見る</a>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-head"><p class="eyebrow">START HERE</p><h2>まず知りたいこと</h2></div>
+  <div class="cards">
+    <a class="card" href="/articles/city-hall-to-private"><small>CASE</small><h3>市役所から民間へ</h3><p>自治体での経験を民間企業の職種にどう置き換えるか。</p></a>
+    <a class="card" href="/articles/local-government-30s"><small>AGE</small><h3>30代地方公務員</h3><p>年齢・経験・年収を踏まえた転職の考え方。</p></a>
+    <a class="card" href="/articles/local-government-40s"><small>AGE</small><h3>40代地方公務員</h3><p>管理職経験や専門性を含めたキャリアの作り方。</p></a>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-head"><p class="eyebrow">CAREER PATH</p><h2>転職先の選択肢</h2></div>
+  <div class="grid-list">
+    <a href="/articles/public-servant-consulting"><b>コンサル</b><span>行政経験・企画力・調整力を活かす</span></a>
+    <a href="/articles/public-servant-it"><b>IT・SaaS</b><span>DX・業務改善・データ活用へ</span></a>
+    <a href="/articles/public-servant-manufacturer"><b>メーカー</b><span>企画・管理・営業・研究支援など</span></a>
+  </div>
+</section>
+
+<section class="container section">
+  <CTA />
+</section>
+</BaseLayout>

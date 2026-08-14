@@ -1,0 +1,37 @@
+---
+import "../styles/global.css";
+const { title, description = "地方公務員から民間企業への転職に特化したキャリア情報サイト" } = Astro.props;
+---
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title} | 地方公務員キャリア</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={`${title} | 地方公務員キャリア`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/">地方公務員<span>キャリア</span></a>
+      <nav>
+        <a href="/articles/local-government-to-private">地方公務員→民間</a>
+        <a href="/articles/city-hall-to-private">市役所→民間</a>
+        <a href="/articles/local-government-30s">30代</a>
+        <a href="/articles/local-government-40s">40代</a>
+        <a href="/services">転職サービス比較</a>
+      </nav>
+    </div>
+  </header>
+  <main>{Astro.children}</main>
+  <footer>
+    <div class="container footer-inner">
+      <div><strong>地方公務員キャリア</strong><p>地方公務員から民間企業への転職を考える人のための情報メディア。</p></div>
+      <div class="small">当サイトはアフィリエイトプログラムを利用しています。掲載情報は各サービスの公式情報等をもとに作成しています。</div>
+    </div>
+  </footer>
+</body>
+</html>

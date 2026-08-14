@@ -1,0 +1,14 @@
+---
+const { links = [] } = Astro.props;
+---
+<section class="related-links">
+  <h2>次に読む</h2>
+  <div class="grid-list">
+    {links.map((link) => (
+      <a href={link.url}>
+        <b>{link.title}</b>
+        <span>読む →</span>
+      </a>
+    ))}
+  </div>
+</section>

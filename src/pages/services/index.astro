@@ -1,13 +1,91 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const services = [
+  {
+    name: "リクルートエージェント",
+    type: "総合エージェント",
+    url: "https://www.r-agent.com/",
+    fit: "初めて民間転職を考える人、求人紹介と書類・面接対策をまとめて受けたい人",
+    admin: "全般、企画・政策、財務・会計、総務・人事、情報・DX、土木・建築",
+    point: "幅広い業界・職種の求人を見ながら、公務員経験を職務経歴書に落とし込む入口にしやすいサービスです。"
+  },
+  {
+    name: "doda",
+    type: "総合転職サービス",
+    url: "https://doda.jp/",
+    fit: "求人を自分でも見たい人、エージェント・スカウトも併用したい人",
+    admin: "全般、住民対応、福祉、保健・健康、教育、商工・産業振興、情報・DX",
+    point: "求人検索、エージェント、スカウトを併用しやすく、まず市場感をつかみたい段階に向いています。"
+  },
+  {
+    name: "ビズリーチ",
+    type: "ハイクラス・スカウト",
+    url: "https://www.bizreach.jp/",
+    fit: "管理職経験、専門性、企画・マネジメント経験を市場で試したい人",
+    admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
+    point: "職務経歴を登録してスカウトを受けることで、自分の経験がどの企業に評価されるかを確認しやすいサービスです。"
+  },
+  {
+    name: "リクルートダイレクトスカウト",
+    type: "ハイクラス・スカウト",
+    url: "https://directscout.recruit.co.jp/",
+    fit: "今すぐ応募よりも、レジュメを整えてスカウトを待ちながら選択肢を広げたい人",
+    admin: "企画・政策、財務・会計、情報・DX、公共系企業、管理職、専門職",
+    point: "企業やエージェントからのスカウトを起点に、行政経験の見え方を確認したい場合に使いやすいサービスです。"
+  }
+];
+
+const routes = [
+  ["企画・政策", "リクルートエージェント / ビズリーチ / リクルートダイレクトスカウト", "事業企画、公共領域コンサル、BtoG企業を比較する"],
+  ["財務・会計", "リクルートエージェント / doda / ビズリーチ", "経理、財務、経営管理、管理部門求人を見る"],
+  ["税務・徴収", "リクルートエージェント / doda", "金融、審査、債権管理、コンプライアンス職を確認する"],
+  ["福祉・保健", "doda / リクルートエージェント", "ヘルスケア、福祉、人材、カスタマーサクセスを広く見る"],
+  ["情報・DX", "doda / リクルートエージェント / ビズリーチ", "IT企画、DX推進、自治体向けSaaS求人を探す"],
+  ["土木・建築", "リクルートエージェント / ビズリーチ", "建設、インフラ、不動産、発注者支援の求人を見る"],
+  ["管理職・専門職", "ビズリーチ / リクルートダイレクトスカウト", "スカウトで市場価値と年収レンジを確認する"]
+];
 ---
-<BaseLayout title="転職サービス比較">
+<BaseLayout title="転職サービス比較" description="地方公務員の行政経験を民間キャリアにつなげるための主要転職サービス比較。総合型、スカウト型、行政経験別の使い分けを整理します。">
 <div class="container article">
   <p class="eyebrow">SERVICES</p>
   <h1>地方公務員向け<br />転職サービス比較</h1>
-  <p class="lead">地方公務員から民間企業への転職では、求人紹介だけでなく「経験の棚卸し」と「職種の翻訳」が重要です。ここでは複数の転職サービスを比較できる形にしていきます。</p>
-  <div class="notice">現在はMVP版です。正式公開時に各サービスの最新情報・公式情報・アフィリエイトリンクを設定します。</div>
-  <div class="service-card"><div><span class="tag">総合型</span><h2>転職エージェント A</h2><p>幅広い求人を扱う総合型。地方公務員からのキャリアチェンジ候補を広く探す用途。</p></div><a class="button" href="/articles/local-government-job-change-agent">選び方を見る</a></div>
-  <div class="service-card"><div><span class="tag">ハイクラス</span><h2>転職サービス B</h2><p>年収アップや管理職・専門職への転職を検討する場合の候補。</p></div><a class="button" href="/articles/local-government-career-change">準備方法を見る</a></div>
+  <p class="lead">地方公務員から民間企業への転職では、求人紹介だけでなく「経験の棚卸し」と「職種の翻訳」が重要です。まずは大手サービスで求人の幅とスカウト反応を確認し、自分の行政経験がどの職種に接続するかを見ていきます。</p>
+
+  <div class="notice"><strong>掲載方針：</strong>このページでは、最初に登録候補になりやすい大手サービスを中心に整理しています。アフィリエイトリンクは、提携確認後に公式リンクから差し替えます。</div>
+
+  <h2>まず登録候補にしやすい大手サービス</h2>
+  <p>迷う場合は、総合型を1つ、スカウト型を1つ登録して、求人紹介とスカウト反応の両方を見ると判断材料が増えます。</p>
+
+  {services.map((service) => (
+    <section class="service-card">
+      <div>
+        <span class="tag">{service.type}</span>
+        <h2>{service.name}</h2>
+        <p>{service.point}</p>
+        <p class="small"><strong>向いている人：</strong>{service.fit}</p>
+        <p class="small"><strong>つながりやすい行政経験：</strong>{service.admin}</p>
+      </div>
+      <a class="button" href={service.url} rel="nofollow sponsored">公式サイトを見る</a>
+    </section>
+  ))}
+
+  <h2>行政経験別の使い分け</h2>
+  <p>部署名そのものよりも、経験を民間職種に翻訳したうえでサービスを選ぶと、求人検索やスカウトの精度が上がります。</p>
+  <div class="grid-list">
+    {routes.map(([department, service, use]) => (
+      <a href="/articles/skill-map/">
+        <b>{department}</b>
+        <span>{service} / {use}</span>
+      </a>
+    ))}
+  </div>
+
+  <h2>登録前に整理しておくこと</h2>
+  <div class="grid-list">
+    <a href="/articles/local-government-resume"><b>職務経歴書の土台を作る</b><span>担当業務ではなく、課題・行動・成果で整理する</span></a>
+    <a href="/articles/local-government-market-value"><b>市場価値を確認する</b><span>求人票とスカウトから評価される経験を探す</span></a>
+    <a href="/articles/local-government-job-view-first"><b>求人を見るだけから始める</b><span>転職を決める前に選択肢を増やす</span></a>
+  </div>
 </div>
 </BaseLayout>

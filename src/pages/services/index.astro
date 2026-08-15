@@ -47,6 +47,48 @@ const routes = [
   ["管理職・専門職", "ビズリーチ / リクルートダイレクトスカウト", "スカウトで市場価値と年収レンジを確認する"]
 ];
 
+const purposes = [
+  {
+    title: "初めて民間転職を考える",
+    services: "リクルートエージェント / doda",
+    reason: "求人紹介、求人検索、職務経歴書の相談をまとめて進めやすい"
+  },
+  {
+    title: "まず市場価値を知りたい",
+    services: "doda / ビズリーチ / リクルートダイレクトスカウト",
+    reason: "求人検索やスカウト反応から、自分の経験がどの職種に見えるか確認しやすい"
+  },
+  {
+    title: "管理職・専門職経験を試したい",
+    services: "ビズリーチ / リクルートダイレクトスカウト",
+    reason: "マネジメント、企画、専門性、年収レンジをスカウトで確認しやすい"
+  },
+  {
+    title: "公共領域・BtoG企業を見たい",
+    services: "リクルートエージェント / ビズリーチ / リクルートダイレクトスカウト",
+    reason: "公共系企業、自治体向けSaaS、コンサル、官民連携領域を探しやすい"
+  },
+  {
+    title: "福祉・保健・介護経験を広く見たい",
+    services: "doda / リクルートエージェント",
+    reason: "ヘルスケア、介護、福祉、人材、カスタマーサクセスなど候補を広げやすい"
+  },
+  {
+    title: "土木・建築・インフラ経験を活かしたい",
+    services: "リクルートエージェント / ビズリーチ",
+    reason: "建設、インフラ、発注者支援、PPP/PFI、施設管理領域を確認しやすい"
+  }
+];
+
+const comparison = [
+  ["求人紹介を受ける", "強い", "強い", "サービス内で接点あり", "サービス内で接点あり"],
+  ["自分で求人検索する", "相談中心", "強い", "限定的", "限定的"],
+  ["スカウトを受ける", "あり", "あり", "強い", "強い"],
+  ["初めての転職相談", "向いている", "向いている", "経験整理後に向く", "経験整理後に向く"],
+  ["管理職・専門職", "求人次第", "求人次第", "向いている", "向いている"],
+  ["市場価値確認", "求人紹介で確認", "求人検索とスカウトで確認", "スカウトで確認", "スカウトで確認"]
+];
+
 const sources = services.map((service) => ({
   title: service.name,
   publisher: "公式サイト",
@@ -61,7 +103,27 @@ const sources = services.map((service) => ({
 
   <div class="notice"><strong>掲載方針：</strong>このページでは、最初に登録候補になりやすい大手サービスを中心に整理しています。アフィリエイトリンクは、提携確認後に公式リンクから差し替えます。</div>
 
-  <h2>まず登録候補にしやすい大手サービス</h2>
+  <h2>迷ったらこの組み合わせ</h2>
+  <p>地方公務員から民間を考える場合、最初から1社に絞る必要はありません。総合型で求人の幅を見て、スカウト型で市場からの反応を見ると、判断材料が増えます。</p>
+  <div class="grid-list">
+    <a href="#major-services"><b>まず情報収集したい</b><span>doda + リクルートエージェント</span></a>
+    <a href="#major-services"><b>自分の市場価値を試したい</b><span>doda + ビズリーチ または リクルートダイレクトスカウト</span></a>
+    <a href="#major-services"><b>管理職・専門性を見せたい</b><span>ビズリーチ + リクルートダイレクトスカウト</span></a>
+    <a href="#before-register"><b>まだ登録が不安</b><span>先に職務経歴書の見出しだけ作る</span></a>
+  </div>
+
+  <h2>目的別に選ぶ</h2>
+  <p>行政経験は、部署名だけでは民間企業に伝わりにくいことがあります。まず「何を確認したいのか」を決めてからサービスを選ぶと、登録後の迷いが減ります。</p>
+  <div class="grid-list">
+    {purposes.map((purpose) => (
+      <a href="#major-services">
+        <b>{purpose.title}</b>
+        <span>{purpose.services} / {purpose.reason}</span>
+      </a>
+    ))}
+  </div>
+
+  <h2 id="major-services">まず登録候補にしやすい大手サービス</h2>
   <p>迷う場合は、総合型を1つ、スカウト型を1つ登録して、求人紹介とスカウト反応の両方を見ると判断材料が増えます。</p>
 
   {services.map((service) => (
@@ -77,6 +139,17 @@ const sources = services.map((service) => ({
     </section>
   ))}
 
+  <h2>主要サービスの比較</h2>
+  <p>サービスごとに得意な使い方が違います。求人紹介を受けたいのか、求人を自分で見たいのか、スカウト反応を見たいのかで選びます。</p>
+  <div class="grid-list">
+    {comparison.map(([theme, recruit, doda, bizreach, direct]) => (
+      <a href="#major-services">
+        <b>{theme}</b>
+        <span>リクルートエージェント: {recruit} / doda: {doda} / ビズリーチ: {bizreach} / リクルートダイレクトスカウト: {direct}</span>
+      </a>
+    ))}
+  </div>
+
   <h2>行政経験別の使い分け</h2>
   <p>部署名そのものよりも、経験を民間職種に翻訳したうえでサービスを選ぶと、求人検索やスカウトの精度が上がります。</p>
   <div class="grid-list">
@@ -88,11 +161,22 @@ const sources = services.map((service) => ({
     ))}
   </div>
 
-  <h2>登録前に整理しておくこと</h2>
+  <h2>登録後に見るべきポイント</h2>
+  <p>登録して終わりではなく、求人票やスカウトから「自分の経験がどう見られているか」を確認します。</p>
+  <ul>
+    <li>行政経験が、どの職種名に置き換えられているか</li>
+    <li>年収、勤務地、働き方の条件が現実的か</li>
+    <li>公共領域、BtoG、DX、福祉、インフラなど近い領域の求人があるか</li>
+    <li>職務経歴書で伝わりにくい経験がどこか</li>
+    <li>今すぐ転職するのか、学習してから動くのか</li>
+  </ul>
+
+  <h2 id="before-register">登録前に整理しておくこと</h2>
   <div class="grid-list">
     <a href="/articles/local-government-resume"><b>職務経歴書の土台を作る</b><span>担当業務ではなく、課題・行動・成果で整理する</span></a>
     <a href="/articles/local-government-market-value"><b>市場価値を確認する</b><span>求人票とスカウトから評価される経験を探す</span></a>
     <a href="/articles/local-government-job-view-first"><b>求人を見るだけから始める</b><span>転職を決める前に選択肢を増やす</span></a>
+    <a href="/learning/"><b>不足する専門性を学ぶ</b><span>現職継続と転職準備の両方に効く資格・書籍を見る</span></a>
   </div>
 
   <SourceList sources={sources} />

@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
+import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
+import { generatedResumeGuides } from "../../data/resumeGuides.js";
+
+export function getStaticPaths() {
+  return generatedResumeGuides.map((guide) => ({
+    params: { slug: `resume-${guide.slug}` },
+    props: { guide }
+  }));
+}
+
+const { guide } = Astro.props;
+---
+<BaseLayout title={`${guide.department}の職務経歴書の書き方`} description={`地方公務員の${guide.department}での経験を、民間企業に伝わる職務経歴書の言葉へ変換する方法を整理します。`}>
+<article class="container article">
+<p class="eyebrow">RESUME</p>
+<h1>{guide.department}の職務経歴書の書き方</h1>
+<p class="lead">{guide.lead} 大切なのは、担当名や制度名だけで終わらせず、課題、行動、関係者、成果に分解して書くことです。</p>
+
+<KeyPoints points={[
+  `${guide.department}の経験は、民間でも伝わる業務単位に分解して書く`,
+  "部署名ではなく、課題、行動、関係者調整、成果を中心に整理する",
+  "求人票を見ながら、職種名や必要経験の言葉へ置き換える"
+]} />
+
+<h2>{guide.department}で書きやすい経験</h2>
+<p>職務経歴書では「どの部署にいたか」よりも「どのような課題を扱い、どのような実務を担ったか」が重要です。次の経験は、民間企業にも伝わりやすい材料になります。</p>
+<ul>
+  {guide.skills.map((skill) => <li>{skill}</li>)}
+</ul>
+
+<h2>そのままだと伝わりにくい表現</h2>
+<p>行政内部では通じる表現でも、採用担当者には役割や成果が見えにくい場合があります。職務経歴書では、自分が担った範囲と再現できる力まで書きます。</p>
+<div class="grid-list">
+  {guide.weak.map((text) => (
+    <a href="#rewrite"><b>{text}</b><span>担当範囲、行動、成果が見える表現に置き換える</span></a>
+  ))}
+</div>
+
+<h2 id="rewrite">民間で伝わる書き換え例</h2>
+<p>行政用語を無理に消す必要はありません。制度名や業務名の後に、民間でも理解できる役割と行動を添えると伝わりやすくなります。</p>
+<div class="notice"><strong>書き換え例：</strong>{guide.rewrite}</div>
+
+<h2>職務経歴書の見出し例</h2>
+<p>見出しは、採用担当者が経験を一目で理解するための入口です。部署名ではなく、業務の機能や役割が伝わる言葉にします。</p>
+<ul>
+  {guide.headings.map((heading) => <li>{heading}</li>)}
+</ul>
+
+<h2>自己PRに入れる観点</h2>
+<p>自己PRでは、性格面だけでなく、民間でも再現できる強みを書きます。</p>
+<div class="notice"><strong>自己PR例：</strong>{guide.pr}</div>
+
+<h2>求人票で確認したい職種</h2>
+<p>登録後は、すぐ応募するのではなく、求人票の職務内容と必要経験を確認します。求人票を見ることで、自分の経験をどの職種名・スキル名に置き換えるべきかが見えます。</p>
+<ul>
+  {guide.jobs.map((job) => <li>{job}</li>)}
+</ul>
+
+<h2>最初から完璧に書かなくていい</h2>
+<p>職務経歴書は、求人票やスカウトを見ながら直していくものです。登録して情報に触れることは、転職を決めるためだけでなく、自分の経験を言語化する練習にもなります。</p>
+
+<RelatedLinksAuto category="department" />
+<CTA title="求人票を見ながら、職務経歴書を直していく" text={`${guide.department}の経験は、求人票を見ることで民間企業の職種名や必要経験に置き換えやすくなります。登録は応募ではなく、情報収集と言語化の入口です。`} buttonText="登録候補を比較する" />
+</article>
+</BaseLayout>

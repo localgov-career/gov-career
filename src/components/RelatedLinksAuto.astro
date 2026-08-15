@@ -1,4 +1,6 @@
 ---
+import { findResumeGuideByDepartmentPath } from "../data/resumeGuides.js";
+
 const { category } = Astro.props;
 
 const pathname = Astro.url.pathname.replace(/\/$/, "");
@@ -78,7 +80,11 @@ const categoryByPath = [
 
 const inferredCategory = categoryByPath.find(([patterns]) => patterns.some((pattern) => pathname.includes(pattern)))?.[1] || "common";
 const selectedCategory = category || inferredCategory;
-const links = (maps[selectedCategory] || maps.common).filter(([url]) => url.replace(/\/$/, "") !== pathname);
+const resumeGuide = findResumeGuideByDepartmentPath(pathname);
+const baseLinks = (maps[selectedCategory] || maps.common).filter(([url]) => url.replace(/\/$/, "") !== pathname);
+const links = resumeGuide
+  ? [[resumeGuide.path, `${resumeGuide.department}の職務経歴書を書く`], ...baseLinks]
+  : baseLinks;
 ---
 
 <section class="related-links">

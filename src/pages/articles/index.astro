@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
+import { resumeGuides } from "../../data/resumeGuides.js";
 ---
 <BaseLayout title="地方公務員キャリア 記事一覧" description="地方公務員の転職、行政経験のスキル化、職種別キャリア、部門別キャリアを悩み別に探せる記事一覧です。">
 <article class="container article">
@@ -29,6 +30,14 @@ import CTA from "../../components/CTA.astro";
 <a href="/articles/local-government-age-limit"><b>年齢的に遅いか知りたい</b><span>30代・40代以降の動き方</span></a>
 <a href="/articles/local-government-resume"><b>職務経歴書で悩んでいる</b><span>行政経験を実績として書く</span></a>
 <a href="/learning/"><b>資格や本を探したい</b><span>行政経験に専門性を足す</span></a>
+</div>
+
+<h2>部門別の職務経歴書から探す</h2>
+<p>同じ公務員経験でも、企画、税務、福祉、土木、DXでは職務経歴書で見せる強みが変わります。所属部門から、民間企業に伝わる書き方を確認できます。</p>
+<div class="grid-list">
+{resumeGuides.map((guide) => (
+<a href={guide.path}><b>{guide.department}</b><span>{guide.headings[0]}</span></a>
+))}
 </div>
 
 <h2>行政経験から探す</h2>

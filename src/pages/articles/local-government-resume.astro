@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
 import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
 import KeyPoints from "../../components/KeyPoints.astro";
+import { resumeGuides } from "../../data/resumeGuides.js";
 ---
 <BaseLayout title="地方公務員の職務経歴書の書き方">
 <article class="container article">
@@ -19,5 +20,12 @@ import KeyPoints from "../../components/KeyPoints.astro";
 <h2>部署名だけでは伝わりにくい</h2><p>「○○課勤務」ではなく、担当業務、課題、行動、成果の順に整理します。</p>
 <h2>行政用語を翻訳する</h2><p>庁内調整、補助金、委託、事業評価などを、プロジェクト推進、予算管理、ベンダー管理、KPI評価などに置き換えます。</p>
 <h2>成果は事実ベースで</h2><p>対象者数、処理時間、予算、参加者数など確認できる数字を使います。</p>
+<h2>部門別の書き方</h2>
+<p>職務経歴書は、配属部門ごとに見せ方が変わります。まずは企画・政策部門のように、課題整理、事業化、関係者調整、予算化までを一連の経験として書ける部門から型を作ると、他部門にも展開しやすくなります。</p>
+<div class="grid-list">
+{resumeGuides.map((guide) => (
+<a href={guide.path}><b>{guide.department}の職務経歴書</b><span>{guide.headings[0]}を民間語に変換する</span></a>
+))}
+</div>
 <RelatedLinksAuto />
 <CTA /><h2>まとめ</h2><p>地方公務員としての経験を具体的な業務・行動・成果に分解し、応募先の職種との接点を作ることが重要です。</p></article></BaseLayout>

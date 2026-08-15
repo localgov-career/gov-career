@@ -86,6 +86,23 @@ const qualifications = [
   }
 ];
 
+const stayQualifications = qualifications.filter((item) => [
+  "ITパスポート",
+  "情報セキュリティマネジメント",
+  "統計検定 データサイエンス基礎",
+  "日商簿記",
+  "キャリアコンサルタント"
+].includes(item.name));
+
+const transferQualifications = qualifications.filter((item) => [
+  "基本情報技術者",
+  "日商簿記",
+  "キャリアコンサルタント",
+  "社会保険労務士",
+  "中小企業診断士",
+  "宅地建物取引士"
+].includes(item.name));
+
 const books = [
   {
     title: "地方自治入門",
@@ -146,10 +163,10 @@ const sources = [
 
 <div class="notice"><strong>選び方：</strong>資格名の知名度だけで選ぶより、「自分の行政経験に何を足すと説明しやすくなるか」で選ぶのがおすすめです。行政経験＋専門性＋地域ネットワークの組み合わせで考えます。</div>
 
-<h2>行政経験別に選びやすい資格</h2>
-<p>まずは、担当業務と近い資格を選ぶと学習が続きやすく、職務経歴書でも説明しやすくなります。</p>
+<h2>現職で頑張る人向け</h2>
+<p>今の自治体で評価される力を増やしたい場合は、担当業務の質を上げる資格を選びます。異動や昇任、DX、業務改善、庁内説明に活きるものを優先します。</p>
 
-{qualifications.map((item) => (
+{stayQualifications.map((item) => (
   <section class="service-card">
     <div>
       <span class="tag">{item.area}</span>
@@ -161,6 +178,31 @@ const sources = [
     <a class="button" href={item.url}>公式情報を見る</a>
   </section>
 ))}
+
+<h2>転職に備える人向け</h2>
+<p>民間転職を意識する場合は、行政経験を企業側の職種名に変換しやすい資格を選びます。資格だけで転職できるわけではありませんが、職務経歴書で「経験＋学習」を説明しやすくなります。</p>
+
+{transferQualifications.map((item) => (
+  <section class="service-card">
+    <div>
+      <span class="tag">{item.area}</span>
+      <h2>{item.name}</h2>
+      <p>{item.next}</p>
+      <p class="small"><strong>向いている人：</strong>{item.fit}</p>
+      <p class="small"><strong>つながりやすい行政経験：</strong>{item.experience}</p>
+    </div>
+    <a class="button" href={item.url}>公式情報を見る</a>
+  </section>
+))}
+
+<h2>迷ったときの選び方</h2>
+<div class="grid-list">
+<a href="/articles/department-digital"><b>DX・業務改善を伸ばしたい</b><span>ITパスポート、情報セキュリティマネジメント、基本情報技術者</span></a>
+<a href="/articles/administrative-data"><b>データに強くなりたい</b><span>統計検定DS基礎、総務省統計局の無料講座</span></a>
+<a href="/articles/administrative-budget"><b>予算・会計経験を活かしたい</b><span>日商簿記、中小企業診断士</span></a>
+<a href="/articles/department-general-affairs-hr"><b>人事・労務へ広げたい</b><span>キャリアコンサルタント、社会保険労務士</span></a>
+<a href="/articles/department-urban-planning"><b>不動産・まちづくりへ広げたい</b><span>宅地建物取引士</span></a>
+</div>
 
 <h2>無料で始めやすい学習</h2>
 <div class="grid-list">

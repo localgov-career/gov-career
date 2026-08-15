@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import SourceList from "../../components/SourceList.astro";
 import KeyPoints from "../../components/KeyPoints.astro";
 
 const services = [
@@ -8,6 +7,8 @@ const services = [
     name: "リクルートエージェント",
     type: "総合エージェント",
     url: "https://www.r-agent.com/",
+    officialUrl: "https://www.r-agent.com/",
+    actionText: "無料登録ページを見る",
     fit: "初めて民間転職を考える人、求人紹介と書類・面接対策をまとめて受けたい人",
     admin: "全般、企画・政策、財務・会計、総務・人事、情報・DX、土木・建築",
     point: "幅広い業界・職種の求人を見ながら、公務員経験を職務経歴書に落とし込む入口にしやすいサービスです。"
@@ -15,29 +16,34 @@ const services = [
   {
     name: "ビズリーチ",
     type: "ハイクラス・スカウト",
-    url: "https://www.bizreach.jp/",
+    url: "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778596&pid=892679604",
+    officialUrl: "https://www.bizreach.jp/",
+    trackingPixel: "https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778596&pid=892679604",
+    actionText: "無料登録ページを見る",
     fit: "管理職経験、専門性、企画・マネジメント経験を市場で試したい人",
     admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
     point: "職務経歴を登録してスカウトを受けることで、自分の経験がどの企業に評価されるかを確認しやすいサービスです。"
   },
   {
-    name: "リクルートダイレクトスカウト",
-    type: "ハイクラス・スカウト",
-    url: "https://directscout.recruit.co.jp/",
-    fit: "今すぐ応募よりも、レジュメを整えてスカウトを待ちながら選択肢を広げたい人",
-    admin: "企画・政策、財務・会計、情報・DX、公共系企業、管理職、専門職",
-    point: "企業やエージェントからのスカウトを起点に、行政経験の見え方を確認したい場合に使いやすいサービスです。"
+    name: "JAC Recruitment",
+    type: "ハイクラス・専門職エージェント",
+    url: "https://www.jac-recruitment.jp/service/",
+    officialUrl: "https://www.jac-recruitment.jp/",
+    actionText: "転職支援サービスを見る",
+    fit: "管理職、専門職、技術職、外資・グローバル企業も含めて相談したい人",
+    admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
+    point: "ミドル・ハイクラスや専門職領域を中心に、職務経歴を整理しながら求人紹介を受けたい場合に検討しやすいサービスです。"
   }
 ];
 
 const routes = [
-  ["企画・政策", "リクルートエージェント / ビズリーチ / リクルートダイレクトスカウト", "事業企画、公共領域コンサル、BtoG企業を比較する"],
-  ["財務・会計", "リクルートエージェント / ビズリーチ", "経理、財務、経営管理、管理部門求人を見る"],
+  ["企画・政策", "リクルートエージェント / ビズリーチ / JAC Recruitment", "事業企画、公共領域コンサル、BtoG企業を比較する"],
+  ["財務・会計", "リクルートエージェント / ビズリーチ / JAC Recruitment", "経理、財務、経営管理、管理部門求人を見る"],
   ["税務・徴収", "リクルートエージェント", "金融、審査、債権管理、コンプライアンス職を確認する"],
   ["福祉・介護・保健", "リクルートエージェント", "ヘルスケア、介護、福祉、人材、カスタマーサクセスを広く見る"],
-  ["情報・DX", "リクルートエージェント / ビズリーチ", "IT企画、DX推進、自治体向けSaaS求人を探す"],
-  ["土木・建築", "リクルートエージェント / ビズリーチ", "建設、インフラ、不動産、発注者支援の求人を見る"],
-  ["管理職・専門職", "ビズリーチ / リクルートダイレクトスカウト", "スカウトで市場価値と年収レンジを確認する"]
+  ["情報・DX", "リクルートエージェント / ビズリーチ / JAC Recruitment", "IT企画、DX推進、自治体向けSaaS求人を探す"],
+  ["土木・建築", "リクルートエージェント / ビズリーチ / JAC Recruitment", "建設、インフラ、不動産、発注者支援の求人を見る"],
+  ["管理職・専門職", "ビズリーチ / JAC Recruitment", "スカウトや専門エージェントで市場価値と年収レンジを確認する"]
 ];
 
 const purposes = [
@@ -48,17 +54,17 @@ const purposes = [
   },
   {
     title: "まず市場価値を知りたい",
-    services: "ビズリーチ / リクルートダイレクトスカウト",
+    services: "ビズリーチ",
     reason: "スカウト反応から、自分の経験がどの職種・年収帯に見えるか確認しやすい"
   },
   {
     title: "管理職・専門職経験を試したい",
-    services: "ビズリーチ / リクルートダイレクトスカウト",
-    reason: "マネジメント、企画、専門性、年収レンジをスカウトで確認しやすい"
+    services: "ビズリーチ / JAC Recruitment",
+    reason: "マネジメント、企画、専門性、年収レンジをスカウトや専門エージェントで確認しやすい"
   },
   {
     title: "公共領域・BtoG企業を見たい",
-    services: "リクルートエージェント / ビズリーチ / リクルートダイレクトスカウト",
+    services: "リクルートエージェント / ビズリーチ / JAC Recruitment",
     reason: "公共系企業、自治体向けSaaS、コンサル、官民連携領域を探しやすい"
   },
   {
@@ -68,24 +74,18 @@ const purposes = [
   },
   {
     title: "土木・建築・インフラ経験を活かしたい",
-    services: "リクルートエージェント / ビズリーチ",
+    services: "リクルートエージェント / ビズリーチ / JAC Recruitment",
     reason: "建設、インフラ、発注者支援、PPP/PFI、施設管理領域を確認しやすい"
   }
 ];
 
 const comparison = [
-  ["求人紹介を受ける", "強い", "サービス内で接点あり", "サービス内で接点あり"],
-  ["スカウトを受ける", "あり", "強い", "強い"],
+  ["求人紹介を受ける", "強い", "サービス内で接点あり", "強い"],
+  ["スカウトを受ける", "あり", "強い", "求人紹介中心"],
   ["初めての転職相談", "向いている", "経験整理後に向く", "経験整理後に向く"],
   ["管理職・専門職", "求人次第", "向いている", "向いている"],
-  ["市場価値確認", "求人紹介で確認", "スカウトで確認", "スカウトで確認"]
+  ["市場価値確認", "求人紹介で確認", "スカウトで確認", "専門エージェントへの相談で確認"]
 ];
-
-const sources = services.map((service) => ({
-  title: service.name,
-  publisher: "公式サイト",
-  url: service.url
-}));
 ---
 <BaseLayout title="転職サービス比較" description="地方公務員の行政経験を民間キャリアにつなげるための主要転職サービス比較。総合型、スカウト型、行政経験別の使い分けを整理します。">
 <div class="container article">
@@ -99,14 +99,14 @@ const sources = services.map((service) => ({
     "登録後に求人票やスカウトで確認すべきポイントを整理する"
   ]} />
 
-  <div class="notice"><strong>掲載方針：</strong>このページでは、最初に登録候補になりやすい大手サービスを中心に整理しています。アフィリエイトリンクは、提携確認後に公式リンクから差し替えます。</div>
+  <div class="notice"><strong>掲載方針：</strong>このページには広告リンクを含みます。主ボタンは登録・申込み導線、各カード内の小さなリンクは公式情報への確認導線です。</div>
 
   <h2>迷ったらこの組み合わせ</h2>
   <p>地方公務員から民間を考える場合、最初から1社に絞る必要はありません。総合エージェントで求人の幅を見て、スカウト型で市場からの反応を見ると、判断材料が増えます。</p>
   <div class="grid-list">
     <a href="#major-services"><b>まず情報収集したい</b><span>リクルートエージェント</span></a>
-    <a href="#major-services"><b>自分の市場価値を試したい</b><span>ビズリーチ または リクルートダイレクトスカウト</span></a>
-    <a href="#major-services"><b>管理職・専門性を見せたい</b><span>ビズリーチ + リクルートダイレクトスカウト</span></a>
+    <a href="#major-services"><b>自分の市場価値を試したい</b><span>ビズリーチ</span></a>
+    <a href="#major-services"><b>管理職・専門性を相談したい</b><span>ビズリーチ + JAC Recruitment</span></a>
     <a href="#before-register"><b>まだ登録が不安</b><span>先に職務経歴書の見出しだけ作る</span></a>
   </div>
 
@@ -133,17 +133,25 @@ const sources = services.map((service) => ({
         <p class="small"><strong>向いている人：</strong>{service.fit}</p>
         <p class="small"><strong>つながりやすい行政経験：</strong>{service.admin}</p>
       </div>
-      <a class="button" href={service.url} rel="nofollow sponsored">公式サイトを見る</a>
+      <div class="service-actions">
+        <a class="button" href={service.url} rel={service.trackingPixel ? "nofollow sponsored" : "nofollow"}>
+          {service.trackingPixel && (
+            <img class="tracking-pixel" src={service.trackingPixel} height="1" width="1" alt="" />
+          )}
+          {service.actionText}
+        </a>
+        <a class="text-link" href={service.officialUrl}>公式情報</a>
+      </div>
     </section>
   ))}
 
   <h2>主要サービスの比較</h2>
   <p>サービスごとに得意な使い方が違います。求人紹介を受けたいのか、求人を自分で見たいのか、スカウト反応を見たいのかで選びます。</p>
   <div class="grid-list">
-    {comparison.map(([theme, recruit, bizreach, direct]) => (
+    {comparison.map(([theme, recruit, bizreach, jac]) => (
       <a href="#major-services">
         <b>{theme}</b>
-        <span>リクルートエージェント: {recruit} / ビズリーチ: {bizreach} / リクルートダイレクトスカウト: {direct}</span>
+        <span>リクルートエージェント: {recruit} / ビズリーチ: {bizreach} / JAC Recruitment: {jac}</span>
       </a>
     ))}
   </div>
@@ -176,7 +184,5 @@ const sources = services.map((service) => ({
     <a href="/articles/local-government-job-view-first"><b>求人を見るだけから始める</b><span>転職を決める前に選択肢を増やす</span></a>
     <a href="/learning/"><b>不足する専門性を学ぶ</b><span>現職継続と転職準備の両方に効く資格・書籍を見る</span></a>
   </div>
-
-  <SourceList sources={sources} />
 </div>
 </BaseLayout>

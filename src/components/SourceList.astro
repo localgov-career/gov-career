@@ -2,13 +2,13 @@
 const { sources = [] } = Astro.props;
 ---
 <section class="source-list">
-  <h2>引用元・参考資料</h2>
-  <div class="grid-list">
+  <p class="source-list-title">引用元・参考資料</p>
+  <ul>
     {sources.map((source) => (
-      <a href={source.url}>
-        <b>{source.title}</b>
+      <li>
+        <a href={source.url}>{source.title}</a>
         <span>{source.publisher}</span>
-      </a>
+      </li>
     ))}
-  </div>
+  </ul>
 </section>

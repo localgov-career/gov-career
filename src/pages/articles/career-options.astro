@@ -1,12 +1,20 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 ---
 <BaseLayout title="行政経験から考える民間職種">
 <article class="container article">
 <p class="eyebrow">CAREER OPTIONS</p>
 <h1>行政経験から考える民間職種</h1>
 <p class="lead">行政経験を民間の職種へ翻訳します。</p>
+
+<KeyPoints points={[
+  "行政経験は、部署名ではなく職種名に置き換えると選択肢が見えやすい",
+  "関係者調整、制度理解、業務改善、データ活用は複数の民間職種につながる",
+  "気になる職種が見つかったら、求人票で必要経験と照らし合わせる"
+]} />
+
 <div class="grid-list">
 <a href="/articles/career-consulting"><b>コンサルタント</b><span>課題整理・制度理解を活かす</span></a>
 <a href="/articles/career-dx"><b>DX推進職</b><span>行政DX・業務改善を活かす</span></a>

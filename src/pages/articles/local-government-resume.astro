@@ -2,12 +2,20 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
 import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 ---
 <BaseLayout title="地方公務員の職務経歴書の書き方">
 <article class="container article">
 <p class="eyebrow">LOCAL GOVERNMENT CAREER</p>
 <h1>地方公務員の職務経歴書の書き方</h1>
 <p class="lead">地方公務員から民間企業への転職を考える人向けに、判断材料を整理します。</p>
+
+<KeyPoints points={[
+  "職務経歴書では、部署名よりも課題、行動、成果を書く",
+  "行政用語は、民間企業が理解しやすい職種・業務の言葉に置き換える",
+  "成果は、対象者数、予算規模、処理件数、改善内容など事実ベースで示す"
+]} />
+
 <h2>部署名だけでは伝わりにくい</h2><p>「○○課勤務」ではなく、担当業務、課題、行動、成果の順に整理します。</p>
 <h2>行政用語を翻訳する</h2><p>庁内調整、補助金、委託、事業評価などを、プロジェクト推進、予算管理、ベンダー管理、KPI評価などに置き換えます。</p>
 <h2>成果は事実ベースで</h2><p>対象者数、処理時間、予算、参加者数など確認できる数字を使います。</p>

@@ -1,12 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 ---
 <BaseLayout title="行政経験をスキルから探す" description="地方公務員の行政経験を、共通スキル、部門専門スキル、地域ネットワークに分けて整理し、民間市場で伝わる言葉へ変換します。">
 <article class="container article">
 <p class="eyebrow">SKILL MAP</p>
 <h1>行政経験を、民間で活かせるスキルに変換する</h1>
 <p class="lead">「自分には特別なスキルがない」と感じる人ほど、まず行政経験を分解してみることが重要です。共通スキル、部門専門スキル、地域ネットワークに分けると、民間での選択肢が見えやすくなります。</p>
+
+<KeyPoints points={[
+  "行政経験は、共通スキル、部門専門スキル、地域ネットワークに分けられる",
+  "部署名ではなく、扱った課題や調整相手、制度、データで整理する",
+  "経験に専門性や学習を足すと、民間職種へ翻訳しやすくなる"
+]} />
 
 <div class="notice"><strong>基本の考え方：</strong>行政経験＋専門性＋地域ネットワークを組み合わせることで、市場価値に変換できます。転職するかどうかを決める前に、まず自分の経験を資産として見直します。</div>
 

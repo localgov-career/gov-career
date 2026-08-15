@@ -2,12 +2,19 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
 import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 ---
 <BaseLayout title="転職を考える前に読む記事" description="地方公務員が転職やキャリア形成を考える前に、不安を整理し、行政経験の価値に気付き、小さな行動へ進むための記事をまとめています。">
 <article class="container article">
 <p class="eyebrow">BEHAVIORAL ECONOMICS</p>
 <h1>転職を考える前に、<br />不安を選択肢に変える</h1>
 <p class="lead">公務員のキャリアは、辞めるか残るかだけではありません。「転職したいのに動けない」という状態を、意思の弱さではなく意思決定の仕組みから考えます。</p>
+
+<KeyPoints points={[
+  "転職活動と退職を分けて考える",
+  "行政を取り巻く変化を、不安ではなく判断材料にする",
+  "行政経験を棚卸しし、市場価値へつなげる"
+]} />
 
 <div class="notice"><strong>このページの考え方：</strong>不安を煽るのではなく、現在の安定を認めたうえで、行政の変化に備え、自分にもできる小さな一歩へ分解します。</div>
 

@@ -1,12 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 ---
 <BaseLayout title="公務員の経験は民間企業で本当に通用するのか">
 <article class="container article">
 <p class="eyebrow">SKILL TRANSLATION</p>
 <h1>公務員の経験は民間企業で本当に通用するのか</h1>
 <p class="lead">「公務員の経験は民間では評価されない」という言葉だけで判断する必要はありません。仕事内容を分解すると、民間企業と共通する能力が見えてきます。</p>
+
+<KeyPoints points={[
+  "公務員経験は、部署名ではなく仕事内容で見る",
+  "行政用語を民間職種の言葉に置き換える",
+  "市場価値は自己評価だけでなく、求人やスカウトで検証する"
+]} />
 <h2>部署名ではなく仕事を見る</h2><p>企画、予算管理、関係者調整、委託管理、業務改善、データ分析など、実際に行った仕事を書き出します。</p>
 <h2>行政用語を民間の仕事に翻訳する</h2><p>庁内調整はプロジェクト推進、業務フロー改善は業務改善、委託事業の管理はベンダーマネジメントなど、応募先が理解できる言葉に置き換えます。</p>
 <h2>成果を具体化する</h2><p>対象者数、予算規模、処理時間、改善率、関係者数など、確認可能な数字を使います。</p>

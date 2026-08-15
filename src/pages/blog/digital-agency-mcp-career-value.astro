@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SourceList from "../../components/SourceList.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 
 const sources = [
   {
@@ -30,6 +31,12 @@ const sources = [
 <p class="eyebrow">BLOG / 行政DX</p>
 <h1>デジタル庁の行政手続MCPから考える、行政経験者の市場価値</h1>
 <p class="lead">デジタル庁が、<a href="https://digital-gov.note.jp/n/n56aaf580bfb6">行政手続等調査データをMCPで自然言語分析できる実装</a>を公開しました。これは単なる技術ニュースではなく、行政経験者の価値を考えるうえで重要な示唆があります。</p>
+
+<KeyPoints points={[
+  "行政データをAIで扱うには、制度や手続の意味を理解する人が必要になる",
+  "行政経験者は、現場の制約やデータ項目の背景を説明できることが強みになる",
+  "ITやデータ分析を少し足すことで、行政DXや公共領域企業へ接続しやすくなる"
+]} />
 
 <div class="notice"><strong>この記事の結論：</strong>AI時代に価値が上がるのは、単にAIを使える人だけではありません。行政手続、制度、データの意味、現場の制約を理解し、それをAIや民間企業に伝わる形へ翻訳できる人です。</div>
 

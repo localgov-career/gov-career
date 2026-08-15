@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
 import SourceList from "../../components/SourceList.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 
 const sources = [
   {
@@ -26,6 +27,12 @@ const sources = [
 <p class="eyebrow">BEHAVIORAL ECONOMICS</p>
 <h1>なぜ地方公務員は、転職したいのに動けないのか</h1>
 <p class="lead">「このままでいいのかな」と思っているのに、求人を見るところまで進まない。地方公務員にとって、それは珍しいことではありません。動けない理由は、能力不足ではなく、情報不足と心理的な負荷が重なっていることが多いからです。</p>
+
+<KeyPoints points={[
+  "動けない理由は、能力不足ではなく情報不足と心理的負荷である",
+  "公務員の安定を認めたうえで、制度や市場の変化を確認する",
+  "最初の一歩は応募ではなく、担当業務の棚卸しである"
+]} />
 
 <div class="notice"><strong>この記事の結論：</strong>転職するかどうかを今日決める必要はありません。まずは退職ではなく、情報収集と経験の棚卸しから始めれば十分です。</div>
 

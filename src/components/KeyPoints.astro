@@ -1,0 +1,11 @@
+---
+const { title = "この記事でわかること", points = [] } = Astro.props;
+---
+<div class="key-points">
+  <strong>{title}</strong>
+  <ul>
+    {points.map((point) => (
+      <li>{point}</li>
+    ))}
+  </ul>
+</div>

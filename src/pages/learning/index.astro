@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SourceList from "../../components/SourceList.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 
 const qualifications = [
   {
@@ -195,6 +196,12 @@ const sources = [
 <p class="eyebrow">LEARNING</p>
 <h1>資格取得・書籍で、行政経験に専門性を足す</h1>
 <p class="lead">資格や本は、転職のためだけに使うものではありません。今の行政経験を棚卸しし、民間でも伝わる専門性を足すことで、残る場合も転職する場合も選択肢を増やせます。</p>
+
+<KeyPoints title="このページで選べること" points={[
+  "現職で評価を上げるための資格と、転職準備に使う資格を分けて考える",
+  "行政経験に足す専門性を、IT、データ、会計、人事労務、まちづくりから選ぶ",
+  "書籍や無料学習で、行政経験を言語化する土台を作る"
+]} />
 
 <div class="notice"><strong>選び方：</strong>資格名の知名度だけで選ぶより、「自分の行政経験に何を足すと説明しやすくなるか」で選ぶのがおすすめです。行政経験＋専門性＋地域ネットワークの組み合わせで考えます。</div>
 

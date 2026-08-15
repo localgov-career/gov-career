@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SourceList from "../../components/SourceList.astro";
+import KeyPoints from "../../components/KeyPoints.astro";
 
 const services = [
   {
@@ -91,6 +92,12 @@ const sources = services.map((service) => ({
   <p class="eyebrow">SERVICES</p>
   <h1>地方公務員向け<br />転職サービス比較</h1>
   <p class="lead">地方公務員から民間企業への転職では、求人紹介だけでなく「経験の棚卸し」と「職種の翻訳」が重要です。まずは大手サービスで求人の幅とスカウト反応を確認し、自分の行政経験がどの職種に接続するかを見ていきます。</p>
+
+  <KeyPoints title="このページで選べること" points={[
+    "初めての転職相談、市場価値確認、管理職・専門職向けでサービスを分ける",
+    "行政経験別に、どのサービスで確認しやすいかを見る",
+    "登録後に求人票やスカウトで確認すべきポイントを整理する"
+  ]} />
 
   <div class="notice"><strong>掲載方針：</strong>このページでは、最初に登録候補になりやすい大手サービスを中心に整理しています。アフィリエイトリンクは、提携確認後に公式リンクから差し替えます。</div>
 

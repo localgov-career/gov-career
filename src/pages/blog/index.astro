@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = [
+  {
+    title: "このサイトで伝えたいこと",
+    url: "/blog/site-purpose/",
+    category: "サイトの目的",
+    date: "2026.08.15",
+    description: "地方公務員のキャリアを、辞めるか残るかの二択ではなく、行政経験を資産化して選択肢を増やす視点から整理します。"
+  }
+];
+---
+<BaseLayout title="ブログ" description="地方公務員のキャリア、行政DX、官公需、公務員制度の動向をキャリア視点で読むブログです。">
+<article class="container article">
+<p class="eyebrow">BLOG</p>
+<h1>行政の変化を、キャリア視点で読む</h1>
+<p class="lead">公務員制度、自治体DX、官公需、労働市場、資格・学習の動きを、地方公務員のキャリア形成につながる形で整理します。</p>
+
+<div class="notice"><strong>ブログの役割：</strong>ニュースを追いかけるだけではなく、行政経験者にとって何が市場価値になり、どんな準備につながるのかを考えます。</div>
+
+<h2>新着記事</h2>
+<div class="grid-list">
+  {posts.map((post) => (
+    <a href={post.url}>
+      <b>{post.title}</b>
+      <span>{post.category} / {post.date} / {post.description}</span>
+    </a>
+  ))}
+</div>
+
+<h2>これから扱うテーマ</h2>
+<div class="grid-list">
+<a href="/articles/public-demand-restructuring/"><b>官公需・公共ビジネス</b><span>自治体と民間の関係変化を読む</span></a>
+<a href="/articles/department-digital/"><b>行政DX</b><span>DX・AI・データ活用をキャリアに結びつける</span></a>
+<a href="/articles/why-public-servants-dont-change/"><b>公務員制度・人事制度</b><span>制度の動きを不安ではなく判断材料にする</span></a>
+<a href="/learning/"><b>資格・学習</b><span>現職継続と転職準備に使える学びを整理する</span></a>
+</div>
+</article>
+</BaseLayout>

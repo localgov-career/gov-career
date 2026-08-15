@@ -2,6 +2,55 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
 import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
+import SourceList from "../../components/SourceList.astro";
+
+const sources = [
+  {
+    title: "日本の地域別将来推計人口 令和5年推計",
+    publisher: "国立社会保障・人口問題研究所",
+    url: "https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/t-page.asp"
+  },
+  {
+    title: "地方公共団体定員管理調査結果",
+    publisher: "総務省",
+    url: "https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/index_00005.html"
+  },
+  {
+    title: "地方公務員制度等 高齢対策",
+    publisher: "総務省",
+    url: "https://www.soumu.go.jp/main_sosiki/jichi_gyousei/koumuin_seido/koreitaisaku.html"
+  },
+  {
+    title: "定年の段階的引上げに係る経緯",
+    publisher: "人事院",
+    url: "https://www.jinji.go.jp/seisaku/kyuyoshogaisekkei/teinen_0007.html"
+  },
+  {
+    title: "一般職業紹介状況 令和7年7月分",
+    publisher: "厚生労働省",
+    url: "https://www.mhlw.go.jp/stf/newpage_62187.html"
+  },
+  {
+    title: "一般職業紹介状況 長期時系列表",
+    publisher: "e-Stat",
+    url: "https://www.e-stat.go.jp/stat-search/files?bunya_l=03&layout=dataset&page=1&result_page=1&second=1&toukei=00450222&tstat=000001020327"
+  },
+  {
+    title: "自治体DX推進計画",
+    publisher: "総務省",
+    url: "https://www.soumu.go.jp/denshijiti/index_00001.html"
+  },
+  {
+    title: "PPP/PFI推進アクションプラン 令和7年改定版",
+    publisher: "内閣府",
+    url: "https://www8.cao.go.jp/pfi/actionplan/action_index_r7.html"
+  },
+  {
+    title: "上下水道分野の官民連携",
+    publisher: "国土交通省",
+    url: "https://www.mlit.go.jp/mizukokudo/watersupply/stf_seisakunitsuite_bunya_0000087512_00004.html"
+  }
+];
 ---
 <BaseLayout title="官公需再編で、公務員経験の価値はどう変わるのか" description="人口減少、自治体DX、PPP/PFI、官民連携の拡大を根拠に、地方公務員の行政経験が民間市場でどう評価されるかを解説します。">
 <article class="container article">
@@ -15,6 +64,10 @@ import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
 <p>背景にあるのは、人口減少、職員体制、行政DX、官民連携の拡大です。国立社会保障・人口問題研究所の地域別将来推計人口は、2020年国勢調査を基に2050年までの市区町村別人口を推計しています。人口構造の変化は、税収、公共施設、福祉、交通、インフラ維持など、自治体業務の前提を変えていきます。</p>
 <p>総務省の地方公共団体定員管理調査は、地方公共団体の職員数や部門別配置を毎年調査するものです。行政需要が複雑化する一方で、自治体が限られた職員体制でサービスを維持する必要があることは、今後の行政運営を考えるうえで重要な前提になります。</p>
 
+<h2>定年延長で、組織の年齢構成も変わる</h2>
+<p>地方公務員の定年引上げについては、総務省が高齢対策として通知や質疑応答集を整理しています。国家公務員についても、人事院は令和5年4月から2年に1歳ずつ定年を引き上げ、令和13年4月に65歳となる流れを示しています。</p>
+<p>定年延長は、経験豊富な職員を活かす制度です。一方で、役職定年、再任用、若手・中堅のポスト、知識継承、職員配置の考え方にも影響します。つまり、同じ自治体に残る場合でも、今後の働き方や役割は固定ではありません。</p>
+
 <h2>自治体DXは、外部企業との接点を増やす</h2>
 <p>総務省は自治体DX推進計画を策定し、自治体が重点的に取り組む事項や手順書、参考事例集を整備しています。これは単にシステムを入れ替える話ではなく、業務プロセス、住民接点、データ活用、庁内体制を見直す動きです。</p>
 <p>この領域では、自治体向けSaaS、BPR支援、システム標準化、データ利活用、住民向けオンライン手続など、民間企業が関わる余地が広がります。行政の現場を理解している人は、民間企業側で自治体との橋渡し役になりやすくなります。</p>
@@ -22,6 +75,10 @@ import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
 <h2>PPP/PFIは、官民連携を政策として広げている</h2>
 <p>内閣府のPPP/PFI推進アクションプランでは、PPP/PFIを公共施設とサービスに民間の知恵や資金を活用する手法として位置づけ、地方公共団体への支援、分野横断型・広域型PPP/PFI、地域課題解決に資する官民連携などを掲げています。</p>
 <p>また、国土交通省は水道分野で官民連携の推進に関する情報を整理しており、第三者委託、PFI、コンセッション、ウォーターPPPなどの検討資料を示しています。インフラや公共施設の維持管理でも、自治体と民間の関係は深くなっています。</p>
+
+<h2>労働市場は、経験を試しやすい局面でもある</h2>
+<p>厚生労働省の一般職業紹介状況では、ハローワークにおける求人、求職、就職の状況が毎月公表されています。たとえば令和7年7月の有効求人倍率は1.22倍、新規求人倍率は2.17倍と公表されています。</p>
+<p>もちろん、すべての職種で簡単に転職できるという意味ではありません。ただ、求人が存在する市場で、自分の経験がどの職種に接続するかを確認することはできます。転職を決める前に求人を見る、スカウトを受ける、職務経歴書を作ることは、現職継続にも役立つ情報収集です。</p>
 
 <h2>従来の発注から、課題設定と連携へ</h2>
 <p>従来の官公需は、自治体が企画・調査を行い、仕様を固めてから民間へ発注する形が中心でした。今後は、自治体が地域課題を設定し、民間企業、コンサル、IT企業、専門企業と連携しながら公共サービスを設計・運用する場面が増えていきます。</p>
@@ -39,14 +96,7 @@ import RelatedLinksAuto from "../../components/RelatedLinksAuto.astro";
 <a href="/articles/department-civil-engineering"><b>土木・インフラ領域</b><span>PPP/PFI、発注者支援、インフラ企業</span></a>
 </div>
 
-<h2>根拠として見ておきたい資料</h2>
-<div class="grid-list">
-<a href="https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/t-page.asp"><b>日本の地域別将来推計人口</b><span>国立社会保障・人口問題研究所</span></a>
-<a href="https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/index_00005.html"><b>地方公共団体定員管理調査結果</b><span>総務省</span></a>
-<a href="https://www.soumu.go.jp/denshijiti/index_00001.html"><b>自治体DX推進計画</b><span>総務省</span></a>
-<a href="https://www8.cao.go.jp/pfi/actionplan/action_index_r7.html"><b>PPP/PFI推進アクションプラン</b><span>内閣府</span></a>
-<a href="https://www.mlit.go.jp/mizukokudo/watersupply/stf_seisakunitsuite_bunya_0000087512_00004.html"><b>上下水道分野の官民連携</b><span>国土交通省</span></a>
-</div>
+<SourceList sources={sources} />
 
 <h2>次の一歩</h2>
 <p>官公需再編を知ったら、次は自分の行政経験を棚卸しします。どの制度を扱ったか、どの関係者と調整したか、どの地域課題を見てきたかを整理すると、民間企業で伝わる強みに変換しやすくなります。</p>

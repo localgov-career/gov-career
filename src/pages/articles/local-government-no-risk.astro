@@ -1,6 +1,25 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
+import SourceList from "../../components/SourceList.astro";
+
+const sources = [
+  {
+    title: "日本の地域別将来推計人口 令和5年推計",
+    publisher: "国立社会保障・人口問題研究所",
+    url: "https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/t-page.asp"
+  },
+  {
+    title: "地方公務員制度等 高齢対策",
+    publisher: "総務省",
+    url: "https://www.soumu.go.jp/main_sosiki/jichi_gyousei/koumuin_seido/koreitaisaku.html"
+  },
+  {
+    title: "一般職業紹介状況 令和7年7月分",
+    publisher: "厚生労働省",
+    url: "https://www.mhlw.go.jp/stf/newpage_62187.html"
+  }
+];
 ---
 <BaseLayout title="地方公務員は転職しないほうが安全？「転職しないリスク」も考える">
 <article class="container article">
@@ -12,9 +31,11 @@ import CTA from "../../components/CTA.astro";
 <h2>5年後を比較する</h2><p>「今の職場を5年続ける」「1年かけて転職活動をする」の2案を書き出し、得るもの・失うものを比較してみます。</p>
 <div class="notice"><strong>考え方のポイント：</strong>転職を今日決める必要はありません。まず情報を増やし、自分の選択肢を確認してから判断することができます。</div>
 <h2>次に読む</h2><div class="grid-list">
+<a href="/articles/public-demand-restructuring"><b>官公需再編で、公務員経験の価値はどう変わるのか</b><span>読む →</span></a>
 <a href="/articles/local-government-age-limit"><b>地方公務員から民間への転職は何歳まで？</b><span>読む →</span></a>
 <a href="/articles/local-government-career-change"><b>地方公務員のキャリアチェンジで失敗しない方法</b><span>読む →</span></a>
 </div>
+<SourceList sources={sources} />
 <CTA />
 </article>
 </BaseLayout>

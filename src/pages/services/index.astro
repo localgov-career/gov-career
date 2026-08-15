@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SourceList from "../../components/SourceList.astro";
 
 const services = [
   {
@@ -45,6 +46,12 @@ const routes = [
   ["土木・建築", "リクルートエージェント / ビズリーチ", "建設、インフラ、不動産、発注者支援の求人を見る"],
   ["管理職・専門職", "ビズリーチ / リクルートダイレクトスカウト", "スカウトで市場価値と年収レンジを確認する"]
 ];
+
+const sources = services.map((service) => ({
+  title: service.name,
+  publisher: "公式サイト",
+  url: service.url
+}));
 ---
 <BaseLayout title="転職サービス比較" description="地方公務員の行政経験を民間キャリアにつなげるための主要転職サービス比較。総合型、スカウト型、行政経験別の使い分けを整理します。">
 <div class="container article">
@@ -87,5 +94,7 @@ const routes = [
     <a href="/articles/local-government-market-value"><b>市場価値を確認する</b><span>求人票とスカウトから評価される経験を探す</span></a>
     <a href="/articles/local-government-job-view-first"><b>求人を見るだけから始める</b><span>転職を決める前に選択肢を増やす</span></a>
   </div>
+
+  <SourceList sources={sources} />
 </div>
 </BaseLayout>

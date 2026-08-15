@@ -1,0 +1,14 @@
+---
+const { sources = [] } = Astro.props;
+---
+<section class="source-list">
+  <h2>引用元・参考資料</h2>
+  <div class="grid-list">
+    {sources.map((source) => (
+      <a href={source.url}>
+        <b>{source.title}</b>
+        <span>{source.publisher}</span>
+      </a>
+    ))}
+  </div>
+</section>

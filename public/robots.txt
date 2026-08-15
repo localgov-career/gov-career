@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://gov-career.localgov-career.workers.dev/sitemap.xml

@@ -1,31 +1,58 @@
 ---
-const { category = "common" } = Astro.props;
+const { category } = Astro.props;
 
-const map = {
+const pathname = Astro.url.pathname.replace(/\/$/, "");
+
+const maps = {
   health: [
-    ["/articles/department-health/","保健・健康部門の記事"],
-    ["/articles/career-healthcare/","ヘルスケア企業への転職"],
-    ["/services/","転職サービス比較"]
+    ["/articles/department-health/","保健・健康部門の経験を民間で活かす"],
+    ["/articles/career-healthcare/","ヘルスケア企業への転職を考える"],
+    ["/articles/category/health/","保健・健康経験者向けガイド"]
   ],
   welfare: [
-    ["/articles/department-welfare/","福祉部門の記事"],
-    ["/articles/career-customer-success/","カスタマーサクセスへの転職"],
-    ["/services/","転職サービス比較"]
+    ["/articles/department-welfare/","福祉部門の経験を民間で活かす"],
+    ["/articles/career-customer-success/","対人支援経験をカスタマーサクセスへつなげる"],
+    ["/articles/category/welfare/","福祉経験者向けガイド"]
   ],
   tax: [
-    ["/articles/department-tax/","税務・徴収部門の記事"],
-    ["/articles/career-consulting/","コンサルへの転職"],
-    ["/services/","転職サービス比較"]
+    ["/articles/department-tax/","税務・徴収部門の経験を民間で活かす"],
+    ["/articles/career-consulting/","制度理解をコンサル職へつなげる"],
+    ["/articles/category/tax/","税務・徴収経験者向けガイド"]
   ],
   finance: [
-    ["/articles/department-finance-accounting/","財務・会計部門の記事"],
-    ["/articles/career-planning/","事業企画への転職"],
-    ["/services/","転職サービス比較"]
+    ["/articles/department-finance-accounting/","財務・会計部門の経験を民間で活かす"],
+    ["/articles/career-planning/","予算・事業管理を事業企画へつなげる"],
+    ["/articles/category/finance/","財務・会計経験者向けガイド"]
   ],
   dx: [
-    ["/articles/department-digital/","情報・DX部門の記事"],
-    ["/articles/career-dx/","DX推進職への転職"],
-    ["/services/","転職サービス比較"]
+    ["/articles/department-digital/","情報・DX部門の経験を民間で活かす"],
+    ["/articles/career-dx/","DX推進職への転職を考える"],
+    ["/articles/category/dx/","情報・DX経験者向けガイド"]
+  ],
+  firstStep: [
+    ["/articles/local-government-market-value","公務員経験は民間企業で通用するのか"],
+    ["/articles/local-government-job-view-first","転職する前に求人を見てみる"],
+    ["/articles/local-government-first-five","最初にやる5つのこと"]
+  ],
+  commonSkill: [
+    ["/articles/skill-map/","行政経験をスキルから探す"],
+    ["/articles/career-options/","行政経験から民間職種を考える"],
+    ["/articles/local-government-market-value","公務員経験の市場価値を確認する"]
+  ],
+  department: [
+    ["/articles/skill-map/","他の行政経験もスキル化する"],
+    ["/articles/career-options/","民間職種から選択肢を探す"],
+    ["/services/","転職サービスを比較する"]
+  ],
+  career: [
+    ["/articles/career-options/","他の民間職種も見る"],
+    ["/articles/skill-map/","自分の行政経験を整理する"],
+    ["/services/","転職サービスを比較する"]
+  ],
+  learning: [
+    ["/articles/skill-map/","行政経験をスキルから整理する"],
+    ["/articles/public-servant-it","ITスキルを民間キャリアへつなげる"],
+    ["/articles/local-government-sidejob","副業・学習で市場価値を高める"]
   ],
   common: [
     ["/articles/skill-map/","行政経験から探す"],
@@ -34,7 +61,22 @@ const map = {
   ]
 };
 
-const links = map[category] || map.common;
+const categoryByPath = [
+  [["department-health", "career-healthcare", "category/health"], "health"],
+  [["department-welfare", "career-customer-success", "category/welfare"], "welfare"],
+  [["department-tax", "category/tax"], "tax"],
+  [["department-finance-accounting", "career-planning", "category/finance"], "finance"],
+  [["department-digital", "career-dx", "public-servant-it", "category/dx"], "dx"],
+  [["why-public-servants", "local-government-no-risk", "local-government-market-value", "local-government-30s-action", "local-government-40s-action", "local-government-salary", "local-government-activity-not-retirement", "local-government-first-five", "local-government-job-view-first"], "firstStep"],
+  [["administrative-"], "commonSkill"],
+  [["department-"], "department"],
+  [["career-"], "career"],
+  [["sidejob", "remote"], "learning"]
+];
+
+const inferredCategory = categoryByPath.find(([patterns]) => patterns.some((pattern) => pathname.includes(pattern)))?.[1] || "common";
+const selectedCategory = category || inferredCategory;
+const links = (maps[selectedCategory] || maps.common).filter(([url]) => url.replace(/\/$/, "") !== pathname);
 ---
 
 <section class="related-links">

@@ -2,18 +2,44 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
 ---
-<BaseLayout title="地方公務員キャリア 記事一覧">
+<BaseLayout title="地方公務員キャリア 記事一覧" description="地方公務員の転職、行政経験のスキル化、職種別キャリア、部門別キャリアを悩み別に探せる記事一覧です。">
 <article class="container article">
 <h1>地方公務員キャリア 記事一覧</h1>
+<p class="lead">今の悩み、行政経験、目指したい職種から記事を探せます。転職を決める前の情報収集にも使える入口です。</p>
+
+<h2>悩みから探す</h2>
 <div class="grid-list">
-<a href="/articles/behavioral-economics/"><b>転職を考える前に</b></a>
-<a href="/articles/skill-map/"><b>行政経験から探す</b></a>
-<a href="/articles/career-options/"><b>職種から探す</b></a>
-<a href="/articles/category/health/"><b>保健・健康</b></a>
-<a href="/articles/category/tax/"><b>税務・徴収</b></a>
-<a href="/articles/category/dx/"><b>情報・DX</b></a>
-<a href="/articles/category/welfare/"><b>福祉</b></a>
-<a href="/articles/category/finance/"><b>財務・会計</b></a>
+<a href="/articles/why-public-servants-dont-change/"><b>転職したいが動けない</b><span>心理的なハードルを整理する</span></a>
+<a href="/articles/local-government-job-view-first"><b>まず求人を見てみたい</b><span>退職前に市場を確認する</span></a>
+<a href="/articles/local-government-no-risk"><b>転職しないリスクも知りたい</b><span>残る選択を戦略的に考える</span></a>
+<a href="/articles/local-government-first-five"><b>最初に何をすればいいか知りたい</b><span>情報収集から始める</span></a>
 </div>
+
+<h2>行政経験から探す</h2>
+<div class="grid-list">
+<a href="/articles/skill-map/"><b>行政経験をスキルから探す</b><span>共通スキル×部門専門スキル</span></a>
+<a href="/articles/administrative-stakeholder-coordination"><b>関係者調整</b><span>プロジェクト推進・営業・CSへ</span></a>
+<a href="/articles/administrative-budget"><b>予算・事業管理</b><span>事業企画・経営管理へ</span></a>
+<a href="/articles/administrative-data"><b>データ活用</b><span>DX・業務改善へ</span></a>
+</div>
+
+<h2>部門別に探す</h2>
+<div class="grid-list">
+<a href="/articles/category/health/"><b>保健・健康</b><span>ヘルスケア・健康経営</span></a>
+<a href="/articles/category/welfare/"><b>福祉</b><span>福祉・人材・カスタマーサクセス</span></a>
+<a href="/articles/category/tax/"><b>税務・徴収</b><span>金融・審査・債権管理</span></a>
+<a href="/articles/category/finance/"><b>財務・会計</b><span>財務・経営管理・事業企画</span></a>
+<a href="/articles/category/dx/"><b>情報・DX</b><span>IT企画・DX推進</span></a>
+</div>
+
+<h2>民間職種から探す</h2>
+<div class="grid-list">
+<a href="/articles/career-options/"><b>職種一覧</b><span>行政経験を民間職種へ翻訳する</span></a>
+<a href="/articles/career-consulting"><b>コンサルタント</b><span>制度理解・課題整理を活かす</span></a>
+<a href="/articles/career-dx"><b>DX推進職</b><span>行政DX・業務改善を活かす</span></a>
+<a href="/articles/career-public-business"><b>公共系企業</b><span>BtoG・官民連携へ</span></a>
+</div>
+
+<CTA />
 </article>
 </BaseLayout>

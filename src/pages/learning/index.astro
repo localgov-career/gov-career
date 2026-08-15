@@ -1,0 +1,200 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SourceList from "../../components/SourceList.astro";
+
+const qualifications = [
+  {
+    name: "ITパスポート",
+    area: "IT基礎",
+    official: "IPA",
+    url: "https://www3.jitec.ipa.go.jp/JitesCbt/index.html",
+    fit: "DX部門に限らず、IT・セキュリティ・経営の共通言語を押さえたい人",
+    experience: "窓口、総務、企画、財政、福祉、保健、教育、土木など全般",
+    next: "行政経験にITの基礎を足して、自治体DXや業務改善の話をしやすくする"
+  },
+  {
+    name: "情報セキュリティマネジメント",
+    area: "情報管理",
+    official: "IPA",
+    url: "https://www.ipa.go.jp/shiken/kubun/sg/index.html",
+    fit: "個人情報、委託先管理、情報資産管理、庁内ルール運用に関わってきた人",
+    experience: "住民情報、税、福祉、国保、総務、情報、契約",
+    next: "制度運用やリスク管理の経験を、民間の情報管理・内部統制の言葉に近づける"
+  },
+  {
+    name: "基本情報技術者",
+    area: "IT実務",
+    official: "IPA",
+    url: "https://www.ipa.go.jp/shiken/index.html",
+    fit: "自治体DX、システム調達、業務改善をより実務寄りに伸ばしたい人",
+    experience: "情報・DX、企画、業務改善、システム調達、データ活用",
+    next: "IT企業、自治体向けSaaS、DX推進職への接続を強くする"
+  },
+  {
+    name: "統計検定 データサイエンス基礎",
+    area: "データ分析",
+    official: "日本統計学会",
+    url: "https://www.toukei-kentei.jp/grade/ds_basic_analytics/",
+    fit: "施策評価、アンケート、人口統計、健診データ、財政データを扱ってきた人",
+    experience: "企画、保健、福祉、財政、教育、産業振興、都市計画",
+    next: "行政データを読み、根拠をもって説明する力を証明しやすくする"
+  },
+  {
+    name: "日商簿記",
+    area: "会計・経営管理",
+    official: "日本商工会議所",
+    url: "https://www.kentei.ne.jp/",
+    fit: "予算、補助金、指定管理、委託、財務会計に関わってきた人",
+    experience: "財政、会計、契約、産業振興、施設管理、補助金事務",
+    next: "予算管理経験を、経理・財務・経営管理の言葉に変換しやすくする"
+  },
+  {
+    name: "キャリアコンサルタント",
+    area: "相談支援・人材",
+    official: "厚生労働省",
+    url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/career_consultant01.html",
+    fit: "就労支援、生活相談、人事、研修、教育、若者支援に関わってきた人",
+    experience: "福祉、子育て、教育、商工、人事、相談窓口",
+    next: "相談支援や面談経験を、人材・教育・キャリア支援領域へ広げる"
+  },
+  {
+    name: "社会保険労務士",
+    area: "労務・社会保険",
+    official: "社会保険労務士試験オフィシャルサイト",
+    url: "https://www.sharosi-siken.or.jp/",
+    fit: "労務、保険、年金、雇用、職員管理などの制度運用経験がある人",
+    experience: "人事、国保、年金、福祉、労働相談、給与・共済",
+    next: "制度理解を、企業の労務管理・人事制度・社会保険実務へ接続する"
+  },
+  {
+    name: "中小企業診断士",
+    area: "経営・事業支援",
+    official: "中小企業庁",
+    url: "https://www.chusho.meti.go.jp/shindanshi/",
+    fit: "地域企業支援、補助金、産業振興、商工施策に関わってきた人",
+    experience: "商工、産業振興、観光、企画、補助金、地域金融",
+    next: "行政の事業者支援経験を、経営支援・コンサルティングに近づける"
+  },
+  {
+    name: "宅地建物取引士",
+    area: "不動産・まちづくり",
+    official: "不動産適正取引推進機構",
+    url: "https://www.retio.or.jp/exam/",
+    fit: "都市計画、建築、用地、空き家、移住定住、公共施設管理に関わってきた人",
+    experience: "都市計画、建築、土木、管財、住宅、地域振興",
+    next: "地域・土地・施設に関する行政経験を、不動産やまちづくり領域へ広げる"
+  }
+];
+
+const books = [
+  {
+    title: "地方自治入門",
+    publisher: "有斐閣",
+    url: "https://www.yuhikaku.co.jp/books/detail/9784641173811",
+    fit: "地方自治を体系的に振り返り、自分の行政経験を言語化したい人",
+    use: "転職前の棚卸し、職務経歴書で行政経験を説明する前提づくり"
+  },
+  {
+    title: "地方自治講義",
+    publisher: "筑摩書房",
+    url: "https://www.chikumashobo.co.jp/product/9784480069467/",
+    fit: "人口減少や地域社会の変化を、広い視点で整理したい人",
+    use: "官公需再編、自治体の将来変化、地域課題を考える補助線"
+  },
+  {
+    title: "自治体職員のためのようこそ地方自治法 第5版",
+    publisher: "第一法規",
+    url: "https://www.daiichihoki.co.jp/store/products/detail/105273.html",
+    fit: "地方自治法を基礎から確認し直したい人、技術職・専門職で制度理解を補強したい人",
+    use: "法令・制度理解を民間でも伝わる強みに変換する土台"
+  },
+  {
+    title: "地方自治・実務入門シリーズ",
+    publisher: "有斐閣",
+    url: "https://www.yuhikaku.co.jp/books/series_search/2249",
+    fit: "条例、環境、防災、コンプライアンスなど、担当分野を深掘りしたい人",
+    use: "部門別経験を専門性として説明するための補強"
+  }
+];
+
+const freeLearning = [
+  {
+    title: "データサイエンス・オンライン講座",
+    publisher: "総務省統計局",
+    url: "https://www.stat.go.jp/dss/online_index.html",
+    fit: "無料で統計やデータ分析の基礎を学びたい人"
+  },
+  {
+    title: "情報処理技術者試験 過去問題・公開問題",
+    publisher: "IPA",
+    url: "https://www.ipa.go.jp/shiken/mondai-kaiotu/index.html",
+    fit: "IT系資格の試験形式を確認しながら学びたい人"
+  }
+];
+
+const sources = [
+  ...qualifications.map((item) => ({ title: item.name, publisher: item.official, url: item.url })),
+  ...books.map((item) => ({ title: item.title, publisher: item.publisher, url: item.url })),
+  ...freeLearning.map((item) => ({ title: item.title, publisher: item.publisher, url: item.url }))
+];
+---
+<BaseLayout title="資格取得・書籍で学ぶ" description="地方公務員の行政経験を市場価値に変えるための資格、無料学習、書籍を行政経験別に整理します。">
+<article class="container article">
+<p class="eyebrow">LEARNING</p>
+<h1>資格取得・書籍で、行政経験に専門性を足す</h1>
+<p class="lead">資格や本は、転職のためだけに使うものではありません。今の行政経験を棚卸しし、民間でも伝わる専門性を足すことで、残る場合も転職する場合も選択肢を増やせます。</p>
+
+<div class="notice"><strong>選び方：</strong>資格名の知名度だけで選ぶより、「自分の行政経験に何を足すと説明しやすくなるか」で選ぶのがおすすめです。行政経験＋専門性＋地域ネットワークの組み合わせで考えます。</div>
+
+<h2>行政経験別に選びやすい資格</h2>
+<p>まずは、担当業務と近い資格を選ぶと学習が続きやすく、職務経歴書でも説明しやすくなります。</p>
+
+{qualifications.map((item) => (
+  <section class="service-card">
+    <div>
+      <span class="tag">{item.area}</span>
+      <h2>{item.name}</h2>
+      <p>{item.next}</p>
+      <p class="small"><strong>向いている人：</strong>{item.fit}</p>
+      <p class="small"><strong>つながりやすい行政経験：</strong>{item.experience}</p>
+    </div>
+    <a class="button" href={item.url}>公式情報を見る</a>
+  </section>
+))}
+
+<h2>無料で始めやすい学習</h2>
+<div class="grid-list">
+  {freeLearning.map((item) => (
+    <a href={item.url}>
+      <b>{item.title}</b>
+      <span>{item.publisher} / {item.fit}</span>
+    </a>
+  ))}
+</div>
+
+<h2>書籍で行政経験を言語化する</h2>
+<p>書籍は、担当業務の知識を深めるだけでなく、自分の経験を「制度理解」「政策過程」「地域課題」「官民連携」といった言葉に置き換える助けになります。</p>
+
+{books.map((book) => (
+  <section class="service-card">
+    <div>
+      <span class="tag">{book.publisher}</span>
+      <h2>{book.title}</h2>
+      <p>{book.use}</p>
+      <p class="small"><strong>向いている人：</strong>{book.fit}</p>
+    </div>
+    <a class="button" href={book.url}>出版社情報を見る</a>
+  </section>
+))}
+
+<h2>次に読む</h2>
+<div class="grid-list">
+<a href="/articles/skill-map/"><b>行政経験をスキルから探す</b><span>資格を選ぶ前に、自分の経験を分解する</span></a>
+<a href="/articles/public-servant-it"><b>公務員経験者がITスキルを身につける意味</b><span>DX・IT資格への入口を見る</span></a>
+<a href="/articles/local-government-resume"><b>職務経歴書の土台を作る</b><span>学んだことを経験と結びつけて書く</span></a>
+<a href="/services/"><b>転職サービスを比較する</b><span>学習と並行して市場感を確認する</span></a>
+</div>
+
+<SourceList sources={sources} />
+</article>
+</BaseLayout>

@@ -1,5 +1,33 @@
 ---
-const { title = "転職サービスを比較する", text = "地方公務員の経験を活かせる転職先を探すなら、まず複数のサービスを比較してみましょう。" } = Astro.props;
+const pathname = Astro.url.pathname;
+
+const defaultPreset = {
+  title: "転職サービスを比較する",
+  text: "地方公務員の経験を活かせる転職先を探すなら、まず複数のサービスで求人やスカウトの反応を比較してみましょう。",
+  buttonText: "転職サービスを見る"
+};
+
+const preset = pathname.includes("/articles/department")
+  ? {
+      title: "この行政経験を求人で確認する",
+      text: "部署名ではなく、制度理解、調整、企画、業務改善などの経験として見ると、民間求人との接点が見つかりやすくなります。",
+      buttonText: "経験別にサービスを見る"
+    }
+  : pathname.includes("/articles/career-") || pathname.includes("/articles/public-servant-")
+    ? {
+        title: "気になる職種の求人を見てみる",
+        text: "応募を決める前でも、求人票を見ることで必要な経験、年収帯、足りないスキルを具体的に確認できます。",
+        buttonText: "求人・スカウト導線を見る"
+      }
+    : pathname.includes("/articles/local-government")
+      ? {
+          title: "転職を決める前に市場感を確認する",
+          text: "退職を決めなくても、求人やスカウトの反応を見ることで、自分の行政経験がどう評価されるかを確かめられます。",
+          buttonText: "転職サービスを比較する"
+        }
+      : defaultPreset;
+
+const { title = preset.title, text = preset.text, buttonText = preset.buttonText } = Astro.props;
 ---
 <section class="cta">
   <div>
@@ -7,5 +35,5 @@ const { title = "転職サービスを比較する", text = "地方公務員の�
     <h2>{title}</h2>
     <p>{text}</p>
   </div>
-  <a class="button" href="/services">転職サービスを見る</a>
+  <a class="button" href="/services/">{buttonText}</a>
 </section>

@@ -1,6 +1,25 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
+import SourceList from "../../components/SourceList.astro";
+
+const sources = [
+  {
+    title: "人事院勧告",
+    publisher: "人事院",
+    url: "https://www.jinji.go.jp/seisaku/kankoku.html"
+  },
+  {
+    title: "国家公務員の給与制度の概要",
+    publisher: "人事院",
+    url: "https://www.jinji.go.jp/seisaku/kyuyo_seidogaiyo.html"
+  },
+  {
+    title: "地方公務員給与実態調査",
+    publisher: "e-Stat / 総務省",
+    url: "https://www.e-stat.go.jp/stat-search/files?kikan=00200&page=1&toukei=00200212&tstat=000001226526"
+  }
+];
 ---
 <BaseLayout title="なぜ地方公務員は、転職したいのに動けないのか" description="地方公務員が転職を考えても動けない理由を、安定、職務経歴書への不安、行政経験の言語化、家族や職場への心理的ハードルから整理します。">
 <article class="container article">
@@ -17,6 +36,11 @@ import CTA from "../../components/CTA.astro";
 <h2>「辞めたい」と「このままでいいのか」は違う</h2>
 <p>動けない人の多くは、本気で今すぐ辞めたいわけではありません。むしろ、今の仕事に責任感があり、住民対応や庁内調整をきちんとやってきた人ほど、簡単に退職を選べません。</p>
 <p>だから最初に整理したいのは、「辞めたいか」ではなく「将来の選択肢を持っているか」です。公務員を続けるにしても、民間に出るにしても、自分の経験を説明できる状態にしておくことは無駄になりません。</p>
+
+<h2>給与や人事制度も、社会の動きと無関係ではない</h2>
+<p>公務員の安定は大きな価値です。ただし、給与や人事制度が完全に固定されているわけではありません。人事院勧告は、国家公務員の給与水準を民間給与と均衡させることを基本に毎年行われており、近年は採用市場での競争力、若年層の処遇、職務・職責に応じた処遇なども論点になっています。</p>
+<p>地方公務員についても、総務省の地方公務員給与実態調査で給与制度の基礎資料が整理されています。こうした公的データを見ると、「公務員だから変化しない」ではなく、「公務員の働き方や処遇も、民間の賃金動向や人材確保の状況と接続している」と考えやすくなります。</p>
+<p>だから不安を感じること自体は自然です。大事なのは、不安のまま退職を考えることではなく、制度の動きと自分の経験を分けて整理し、現職継続・学習・転職準備のどれを選んでも動ける状態にしておくことです。</p>
 
 <h2>行政経験をスキルとして見ていない</h2>
 <p>公務員は、自分の仕事を「ただの担当業務」と考えがちです。けれど、実際には、住民対応、制度運用、予算管理、庁内調整、議会対応、委託先管理、データ集計、事業改善など、多くの経験を積んでいます。</p>
@@ -44,6 +68,7 @@ import CTA from "../../components/CTA.astro";
 <a href="/articles/local-government-no-risk"><b>転職しないことにもリスクがある</b><span>読む →</span></a>
 <a href="/articles/local-government-activity-not-retirement"><b>「転職活動＝退職」ではない</b><span>読む →</span></a>
 </div>
+<SourceList sources={sources} />
 <CTA />
 </article>
 </BaseLayout>

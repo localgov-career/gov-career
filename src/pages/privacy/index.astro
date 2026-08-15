@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SourceList from "../../components/SourceList.astro";
+
+const sources = [
+  {
+    title: "個人情報保護法等",
+    publisher: "個人情報保護委員会",
+    url: "https://www.ppc.go.jp/personalinfo/"
+  },
+  {
+    title: "Google による Cookie の利用について",
+    publisher: "Google",
+    url: "https://policies.google.com/technologies/cookies?hl=ja"
+  },
+  {
+    title: "Google Analytics によるデータの保護",
+    publisher: "Google",
+    url: "https://support.google.com/analytics/answer/6004245?hl=ja"
+  }
+];
+---
+<BaseLayout title="プライバシーポリシー" description="地方公務員キャリアのプライバシーポリシーです。個人情報、アクセス解析、Cookie、広告配信に関する方針を掲載しています。">
+<article class="container article">
+<p class="eyebrow">PRIVACY POLICY</p>
+<h1>プライバシーポリシー</h1>
+<p class="lead">地方公務員キャリアは、利用者の個人情報の保護に配慮し、取得する情報の範囲、利用目的、管理方法を明確にするよう努めます。</p>
+
+<h2>取得する情報</h2>
+<p>当サイトでは、問い合わせフォーム等を設置した場合、氏名、メールアドレス、問い合わせ内容など、利用者が入力した情報を取得することがあります。</p>
+<p>また、アクセス解析や広告配信のため、Cookie、閲覧ページ、利用環境、参照元など、個人を直接特定しない情報を取得する場合があります。</p>
+
+<h2>利用目的</h2>
+<ul>
+<li>問い合わせへの回答</li>
+<li>サイト内容の改善</li>
+<li>アクセス状況の分析</li>
+<li>広告配信、アフィリエイト成果の確認</li>
+<li>不正利用や迷惑行為への対応</li>
+</ul>
+
+<h2>アクセス解析について</h2>
+<p>当サイトでは、今後 Google Analytics 等のアクセス解析ツールを利用する場合があります。これらのツールは Cookie を使用して、個人を直接特定しない形で閲覧状況を収集することがあります。</p>
+<p>Cookie の利用を望まない場合、ブラウザの設定により Cookie を無効化できます。ただし、一部の機能が利用しにくくなる場合があります。</p>
+
+<h2>広告・アフィリエイトについて</h2>
+<p>当サイトでは、A8.net、バリューコマース等のアフィリエイトプログラムを利用する場合があります。掲載しているリンクを経由して商品やサービスの申し込みが行われた場合、当サイトが報酬を受け取ることがあります。</p>
+<p>広告配信事業者やアフィリエイトサービスプロバイダーは、成果計測や広告配信のため Cookie 等を利用する場合があります。</p>
+
+<h2>第三者提供について</h2>
+<p>法令に基づく場合を除き、利用者本人の同意なく、取得した個人情報を第三者に提供することはありません。</p>
+
+<h2>安全管理</h2>
+<p>取得した情報について、漏えい、紛失、改ざん、不正アクセス等を防ぐため、必要かつ適切な管理に努めます。</p>
+
+<h2>開示・訂正・削除について</h2>
+<p>利用者本人から、個人情報の開示、訂正、利用停止、削除等の申し出があった場合、本人確認のうえ、法令に従って適切に対応します。</p>
+
+<h2>改定について</h2>
+<p>本ポリシーは、法令の変更、利用サービスの追加、サイト運営方針の変更等に応じて、予告なく改定する場合があります。</p>
+
+<p class="small">制定日: 2026年8月15日</p>
+
+<SourceList sources={sources} />
+</article>
+</BaseLayout>

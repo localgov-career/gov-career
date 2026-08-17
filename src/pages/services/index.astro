@@ -6,9 +6,9 @@ const services = [
   {
     name: "リクルートエージェント",
     type: "総合エージェント",
-    url: "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680702",
+    url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680702",
     officialUrl: "https://www.r-agent.com/",
-    trackingPixel: "https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680702",
+    trackingPixel: "//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680702",
     actionText: "無料登録ページを見る",
     fit: "初めて民間転職を考える人、求人紹介と書類・面接対策をまとめて受けたい人",
     admin: "全般、企画・政策、財務・会計、総務・人事、情報・DX、土木・建築",
@@ -17,9 +17,9 @@ const services = [
   {
     name: "ビズリーチ",
     type: "ハイクラス・スカウト",
-    url: "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680701",
+    url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680701",
     officialUrl: "https://www.bizreach.jp/",
-    trackingPixel: "https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680701",
+    trackingPixel: "//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680701",
     actionText: "無料登録ページを見る",
     fit: "管理職経験、専門性、企画・マネジメント経験を市場で試したい人",
     admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
@@ -28,9 +28,9 @@ const services = [
   {
     name: "JAC Recruitment",
     type: "ハイクラス・専門職エージェント",
-    url: "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680704",
+    url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680704",
     officialUrl: "https://www.jac-recruitment.jp/",
-    trackingPixel: "https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680704",
+    trackingPixel: "//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680704",
     actionText: "転職支援サービスを見る",
     fit: "管理職、専門職、技術職、外資・グローバル企業も含めて相談したい人",
     admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
@@ -145,7 +145,7 @@ const comparison = [
         <p class="small"><strong>つながりやすい行政経験：</strong>{service.admin}</p>
       </div>
       <div class="service-actions">
-        <a class="button" href={service.url} rel={service.trackingPixel ? "nofollow sponsored" : "nofollow"}>
+        <a class="button" href={service.url} rel="nofollow">
           {service.trackingPixel && (
             <img class="tracking-pixel" src={service.trackingPixel} height="1" width="1" alt="" />
           )}

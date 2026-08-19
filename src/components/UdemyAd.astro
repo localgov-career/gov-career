@@ -1,0 +1,34 @@
+---
+const {
+  title = "Udemyで、行政経験に足すスキルを学ぶ",
+  text = "IT、データ分析、簿記、業務改善、プレゼンなどは、行政経験を民間でも伝わる強みに変える助けになります。資格学習の前後に、動画講座で全体像をつかむ使い方もしやすいです。"
+} = Astro.props;
+---
+<section class="ad-card" aria-label="広告">
+  <div>
+    <p class="ad-label">広告</p>
+    <h2>{title}</h2>
+    <p>{text}</p>
+  </div>
+  <div class="ad-banner">
+    <script is:inline language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3778687&pid=892682297"></script>
+    <noscript>
+      <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892682297" rel="nofollow sponsored">
+        <img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892682297" border="0" alt="Udemy広告" />
+      </a>
+    </noscript>
+  </div>
+</section>
+<style>
+  .ad-banner {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
+  .ad-banner :global(img),
+  .ad-banner :global(iframe) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+</style>

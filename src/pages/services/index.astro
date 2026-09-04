@@ -10,6 +10,8 @@ const services = [
     officialUrl: "https://www.r-agent.com/",
     trackingPixel: "//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680702",
     actionText: "無料登録ページを見る",
+    emphasis: "最初に登録候補",
+    isPrimary: true,
     fit: "初めて民間転職を考える人、求人紹介と書類・面接対策をまとめて受けたい人",
     admin: "全般、企画・政策、財務・会計、総務・人事、情報・DX、土木・建築",
     point: "幅広い業界・職種の求人を見ながら、公務員経験を職務経歴書に落とし込む入口にしやすいサービスです。"
@@ -19,8 +21,10 @@ const services = [
     type: "ハイクラス・スカウト",
     url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892687895",
     officialUrl: "https://www.bizreach.jp/",
-    trackingPixel: "//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892687895",
-    actionText: "無料登録ページを見る",
+    trackingPixel: "",
+    actionText: "公式情報を見る",
+    emphasis: "補助的に確認",
+    isPrimary: false,
     fit: "管理職経験、専門性、企画・マネジメント経験を市場で試したい人",
     admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
     point: "職務経歴を登録してスカウトを受けることで、自分の経験がどの企業に評価されるかを確認しやすいサービスです。"
@@ -30,8 +34,10 @@ const services = [
     type: "ハイクラス・専門職エージェント",
     url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680704",
     officialUrl: "https://www.jac-recruitment.jp/",
-    trackingPixel: "//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680704",
-    actionText: "転職支援サービスを見る",
+    trackingPixel: "",
+    actionText: "公式情報を見る",
+    emphasis: "補助的に確認",
+    isPrimary: false,
     fit: "管理職、専門職、技術職、外資・グローバル企業も含めて相談したい人",
     admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
     point: "ミドル・ハイクラスや専門職領域を中心に、職務経歴を整理しながら求人紹介を受けたい場合に検討しやすいサービスです。"
@@ -39,13 +45,13 @@ const services = [
 ];
 
 const routes = [
-  ["企画・政策", "リクルートエージェント / ビズリーチ / JAC Recruitment", "事業企画、公共領域コンサル、BtoG企業を比較する"],
-  ["財務・会計", "リクルートエージェント / ビズリーチ / JAC Recruitment", "経理、財務、経営管理、管理部門求人を見る"],
+  ["企画・政策", "リクルートエージェント", "事業企画、公共領域コンサル、BtoG企業の求人を広く見る"],
+  ["財務・会計", "リクルートエージェント", "経理、財務、経営管理、管理部門求人を見る"],
   ["税務・徴収", "リクルートエージェント", "金融、審査、債権管理、コンプライアンス職を確認する"],
   ["福祉・介護・保健", "リクルートエージェント", "ヘルスケア、介護、福祉、人材、カスタマーサクセスを広く見る"],
-  ["情報・DX", "リクルートエージェント / ビズリーチ / JAC Recruitment", "IT企画、DX推進、自治体向けSaaS求人を探す"],
-  ["土木・建築", "リクルートエージェント / ビズリーチ / JAC Recruitment", "建設、インフラ、不動産、発注者支援の求人を見る"],
-  ["管理職・専門職", "ビズリーチ / JAC Recruitment", "スカウトや専門エージェントで市場価値と年収レンジを確認する"]
+  ["情報・DX", "リクルートエージェント", "IT企画、DX推進、自治体向けSaaS求人を探す"],
+  ["土木・建築", "リクルートエージェント", "建設、インフラ、不動産、発注者支援の求人を見る"],
+  ["管理職・専門職", "リクルートエージェントを起点に、必要に応じてスカウト型も確認", "求人紹介で職務経歴の見せ方と年収レンジを確認する"]
 ];
 
 const purposes = [
@@ -56,18 +62,18 @@ const purposes = [
   },
   {
     title: "まず市場価値を知りたい",
-    services: "ビズリーチ",
-    reason: "スカウト反応から、自分の経験がどの職種・年収帯に見えるか確認しやすい"
+    services: "リクルートエージェント",
+    reason: "求人紹介と面談を通じて、自分の経験がどの職種・年収帯に見えるか確認しやすい"
   },
   {
     title: "管理職・専門職経験を試したい",
-    services: "ビズリーチ / JAC Recruitment",
-    reason: "マネジメント、企画、専門性、年収レンジをスカウトや専門エージェントで確認しやすい"
+    services: "リクルートエージェント",
+    reason: "まず求人紹介で候補職種を確認し、必要に応じてスカウト型・専門職向けサービスも比較しやすい"
   },
   {
     title: "公共領域・BtoG企業を見たい",
-    services: "リクルートエージェント / ビズリーチ / JAC Recruitment",
-    reason: "公共系企業、自治体向けSaaS、コンサル、官民連携領域を探しやすい"
+    services: "リクルートエージェント",
+    reason: "公共系企業、自治体向けSaaS、コンサル、官民連携領域の求人を広く探しやすい"
   },
   {
     title: "福祉・保健・介護経験を広く見たい",
@@ -76,8 +82,8 @@ const purposes = [
   },
   {
     title: "土木・建築・インフラ経験を活かしたい",
-    services: "リクルートエージェント / ビズリーチ / JAC Recruitment",
-    reason: "建設、インフラ、発注者支援、PPP/PFI、施設管理領域を確認しやすい"
+    services: "リクルートエージェント",
+    reason: "建設、インフラ、発注者支援、PPP/PFI、施設管理領域を幅広く確認しやすい"
   }
 ];
 
@@ -93,12 +99,12 @@ const comparison = [
 <div class="container article">
   <p class="eyebrow">SERVICES</p>
   <h1>地方公務員向け<br />転職サービス比較</h1>
-  <p class="lead">地方公務員から民間企業への転職では、求人紹介だけでなく「経験の棚卸し」と「職種の翻訳」が重要です。まずは大手サービスで求人の幅とスカウト反応を確認し、自分の行政経験がどの職種に接続するかを見ていきます。</p>
+  <p class="lead">地方公務員から民間企業への転職では、求人紹介だけでなく「経験の棚卸し」と「職種の翻訳」が重要です。まずはリクルートエージェントを中心に求人の幅を確認し、自分の行政経験がどの職種に接続するかを見ていきます。</p>
 
   <KeyPoints title="このページで選べること" points={[
-    "初めての転職相談、市場価値確認、管理職・専門職向けでサービスを分ける",
+    "初めての転職相談は、リクルートエージェントを中心に考える",
     "行政経験別に、どのサービスで確認しやすいかを見る",
-    "登録後に求人票やスカウトで確認すべきポイントを整理する"
+    "登録後に求人票で確認すべきポイントを整理する"
   ]} />
 
   <div class="notice"><strong>掲載方針：</strong>このページには広告リンクを含みます。主ボタンは登録・申込み導線、各カード内の小さなリンクは公式情報への確認導線です。</div>
@@ -115,19 +121,19 @@ const comparison = [
 
   <h2>登録は、転職を決めることではない</h2>
   <p>公務員は、民間の転職サービスに登録した経験がない人も少なくありません。そのため「登録したら、すぐ応募しなければいけない」「職場に知られるのではないか」と不安になりやすいところがあります。</p>
-  <p>しかし最初の目的は、転職を決めることではなく情報収集です。求人票、スカウト、エージェントとの面談に触れることで、行政経験が民間ではどの職種名・スキル名で表現されるのかが見えてきます。</p>
+  <p>しかし最初の目的は、転職を決めることではなく情報収集です。求人票やエージェントとの面談に触れることで、行政経験が民間ではどの職種名・スキル名で表現されるのかが見えてきます。</p>
   <div class="grid-list">
     <a href="#major-services"><b>求人票を見る</b><span>必要経験、年収帯、職種名から自分との差分を知る</span></a>
-    <a href="#major-services"><b>スカウト反応を見る</b><span>企画、調整、管理職、専門性がどう評価されるか確認する</span></a>
+    <a href="#major-services"><b>求人紹介を受ける</b><span>企画、調整、管理職、専門性がどう評価されるか確認する</span></a>
     <a href="#before-register"><b>職務経歴を言語化する</b><span>担当業務を、課題・行動・成果の言葉に置き換える</span></a>
   </div>
 
   <h2>迷ったらこの組み合わせ</h2>
-  <p>地方公務員から民間を考える場合、最初から1社に絞る必要はありません。総合エージェントで求人の幅を見て、スカウト型で市場からの反応を見ると、経験を言語化する材料が増えます。</p>
+  <p>地方公務員から民間を考える場合、まずは総合エージェントで求人の幅を見るのが始めやすい流れです。特に初めて転職サービスを使う場合は、リクルートエージェントを起点にすると、職務経歴書や面接対策まで相談しながら進められます。</p>
   <div class="grid-list">
     <a href="#major-services"><b>まず情報収集したい</b><span>リクルートエージェント</span></a>
-    <a href="#major-services"><b>自分の市場価値を試したい</b><span>ビズリーチ</span></a>
-    <a href="#major-services"><b>管理職・専門性を相談したい</b><span>ビズリーチ + JAC Recruitment</span></a>
+    <a href="#major-services"><b>求人票を見ながら整理したい</b><span>リクルートエージェント</span></a>
+    <a href="#major-services"><b>管理職・専門性も気になる</b><span>まずリクルートエージェント、必要に応じて他サービスも確認</span></a>
     <a href="#before-register"><b>まだ登録が不安</b><span>先に職務経歴書の見出しだけ作る</span></a>
   </div>
 
@@ -143,19 +149,20 @@ const comparison = [
   </div>
 
   <h2 id="major-services">まず登録候補にしやすい大手サービス</h2>
-  <p>迷う場合は、総合エージェントを1つ、スカウト型を1つ登録して、求人紹介とスカウト反応の両方を見ると判断材料が増えます。</p>
+  <p>迷う場合は、まずリクルートエージェントで求人紹介と面談に触れてみると判断材料が増えます。スカウト型や専門職向けサービスは、職務経歴が整理できてから補助的に確認する使い方が向いています。</p>
 
   {services.map((service) => (
     <section class="service-card">
       <div>
         <span class="tag">{service.type}</span>
+        <span class:list={["tag", service.isPrimary ? "primary-tag" : "sub-tag"]}>{service.emphasis}</span>
         <h2>{service.name}</h2>
         <p>{service.point}</p>
         <p class="small"><strong>向いている人：</strong>{service.fit}</p>
         <p class="small"><strong>つながりやすい行政経験：</strong>{service.admin}</p>
       </div>
       <div class="service-actions">
-        <a class="button" href={service.url} rel="nofollow">
+        <a class:list={["button", !service.isPrimary && "button-secondary"]} href={service.isPrimary ? service.url : service.officialUrl} rel={service.isPrimary ? "nofollow" : undefined}>
           {service.trackingPixel && (
             <img class="tracking-pixel" src={service.trackingPixel} height="1" width="1" alt="" />
           )}
@@ -167,7 +174,7 @@ const comparison = [
   ))}
 
   <h2>主要サービスの比較</h2>
-  <p>サービスごとに得意な使い方が違います。求人紹介を受けたいのか、求人を自分で見たいのか、スカウト反応を見たいのかで選びます。</p>
+  <p>サービスごとに得意な使い方が違います。現時点ではリクルートエージェントを主軸に、求人紹介、初回相談、職務経歴書の整理を進める流れにしています。</p>
   <div class="grid-list">
     {comparison.map(([theme, recruit, bizreach, jac]) => (
       <a href="#major-services">

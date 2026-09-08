@@ -2,32 +2,32 @@
 const pathname = Astro.url.pathname;
 
 const defaultPreset = {
-  title: "まず登録して、求人情報に触れてみる",
-  text: "登録は転職を決めることではありません。求人票を見ることで、自分の行政経験を民間で伝わる言葉に直す練習になります。",
-  buttonText: "登録候補を比較する"
+  title: "今の自分に合う、次の一歩を選ぶ",
+  text: "現職で経験を積む、学習する、民間の仕事を調べる。今の目的に合うものを一つ選び、できることから始めましょう。",
+  buttonText: "経験を整理する"
 };
 
 const preset = pathname.includes("/articles/department")
   ? {
-      title: "この行政経験を、実際の求人で確認する",
-      text: "求人票を見ないままだと、自分の経験がどの職種に近いのか判断しにくいものです。登録後に求人紹介に触れることで、経験を言語化しやすくなります。",
-      buttonText: "登録候補を比較する"
+      title: "この行政経験につながる仕事を調べる",
+      text: "公開求人の仕事内容と応募条件を読み、自分の担当経験との接点を整理します。相談が必要になったら、転職サービスの使い方を比較できます。",
+      buttonText: "転職サービスの使い方を見る"
     }
   : pathname.includes("/articles/career-") || pathname.includes("/articles/public-servant-")
     ? {
         title: "気になる職種は、求人票で確かめる",
-        text: "応募前の情報収集でも、登録して求人票を見る価値があります。必要経験、年収帯、足りないスキルが見えると、自分の強みを言葉にしやすくなります。",
-        buttonText: "登録候補を比較する"
+        text: "公開求人から、必要経験や仕事内容を確認できます。今の経験が合う点と、これから身につけたいスキルを分けてみましょう。",
+        buttonText: "転職サービスの使い方を見る"
       }
     : pathname.includes("/articles/local-government")
       ? {
-          title: "転職を決める前に、まず求人紹介で情報収集する",
-          text: "公務員は転職サービスに慣れていない人も多いですが、登録は退職の意思表示ではありません。求人票を見ながら、自分の経験を言語化するための第一歩にできます。",
-          buttonText: "登録候補を比較する"
+          title: "転職を決める前に、仕事内容を調べる",
+          text: "公開求人や企業の採用ページで、仕事内容と応募条件を確認できます。個別に相談したくなったら、必要な支援と利用条件を比べましょう。",
+          buttonText: "転職サービスの使い方を見る"
         }
       : defaultPreset;
 
-const { title = preset.title, text = preset.text, buttonText = preset.buttonText } = Astro.props;
+const { title = preset.title, text = preset.text, buttonText = preset.buttonText, href = preset === defaultPreset ? "/articles/skill-map/" : "/services/" } = Astro.props;
 ---
 <section class="cta">
   <div>
@@ -35,5 +35,10 @@ const { title = preset.title, text = preset.text, buttonText = preset.buttonText
     <h2>{title}</h2>
     <p>{text}</p>
   </div>
-  <a class="button" href="/services/">{buttonText}</a>
+  <a class="button" href={href}>{buttonText}</a>
 </section>
+<div class="grid-list next-options" aria-label="目的に合わせた次の行動">
+  <a href="/articles/current-role-growth/"><b>現職で成長する</b><span>業務改善・異動希望・学習を計画する</span></a>
+  <a href="/learning/"><b>学習から始める</b><span>今の業務に必要な知識を補う</span></a>
+  <a href="/services/"><b>民間の仕事を調べる</b><span>公開求人や転職サービスを比較する</span></a>
+</div>

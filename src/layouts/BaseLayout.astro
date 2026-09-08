@@ -1,40 +1,66 @@
 ---
 import "../styles/global.css";
-const { title, description = "地方公務員から民間企業への転職情報サイト" } = Astro.props;
+import { siteUrl, siteName } from "../data/site.js";
+const { title, description = `${title}。地方公務員の経験を整理し、現職での成長・学習・民間転職の選択肢を考えるためのガイドです。`, updatedDate } = Astro.props;
+const canonical = new URL(`${Astro.url.pathname.replace(/\/$/, "")}/`, siteUrl).href;
+const fullTitle = `${title} | ${siteName}`;
+const isArticle = /^\/(articles|blog)\/.+/.test(Astro.url.pathname);
+const navigation = [
+  ["/articles/", "悩みから探す"],
+  ["/articles/skill-map/", "行政経験から探す"],
+  ["/articles/career-options/", "職種から探す"],
+  ["/articles/current-role-growth/", "現職で成長する"],
+  ["/learning/", "資格・書籍"],
+  ["/blog/", "ブログ"],
+  ["/services/", "転職サービス比較"]
+];
 ---
 <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>{title} | 地方公務員キャリア</title>
+  <title>{fullTitle}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:type" content={isArticle ? "article" : "website"} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={new URL("/og-default.png", siteUrl).href} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="地方公務員キャリア — 経験を整理し、これからの選択肢を増やす" />
+  <meta name="twitter:card" content="summary_large_image" />
+  {isArticle && updatedDate && <meta property="article:modified_time" content={`${updatedDate}T00:00:00+09:00`} />}
 </head>
 <body>
+<a class="skip-link" href="#main-content">本文へ進む</a>
 <header class="site-header">
   <div class="container header-inner">
     <a class="logo" href="/">地方公務員<span>キャリア</span></a>
+    <nav class="desktop-nav" aria-label="メインナビゲーション">
+      {navigation.map(([href, label]) => <a href={href} aria-current={Astro.url.pathname === href ? "page" : undefined}>{label}</a>)}
+    </nav>
     <details class="site-menu">
       <summary aria-label="メニュー">
         <span></span>
         <span></span>
         <span></span>
       </summary>
-      <nav>
-        <a href="/articles/behavioral-economics/">転職を考える前に</a>
-        <a href="/articles/">悩みから探す</a>
-        <a href="/articles/skill-map/">行政経験から探す</a>
-        <a href="/articles/career-options/">職種から探す</a>
-        <a href="/learning/">資格・書籍</a>
-        <a href="/blog/">ブログ</a>
-        <a href="/services/">転職サービス比較</a>
+      <nav aria-label="モバイルナビゲーション">
+        {navigation.map(([href, label]) => <a href={href} aria-current={Astro.url.pathname === href ? "page" : undefined}>{label}</a>)}
       </nav>
     </details>
   </div>
 </header>
 
-<main>
+<main id="main-content" tabindex="-1">
+  {updatedDate && <p class="container page-meta">内容更新：<time datetime={updatedDate}>{updatedDate.replaceAll("-", "/")}</time></p>}
   <slot />
+  {isArticle && <aside class="container editorial-note"><a href="/editorial-policy/">編集・広告掲載方針</a><p>経験の整理や職種の例は、キャリアを検討するための提案です。制度・サービスの条件は、本文の参考資料と各機関の公式案内を確認してください。</p></aside>}
 </main>
 <footer>
   <div class="container footer-inner">
@@ -48,6 +74,7 @@ const { title, description = "地方公務員から民間企業への転職情�
       <section>
         <h2>まず読む</h2>
         <ul>
+          <li><a href="/articles/current-role-growth/">現職で成長する</a></li>
           <li><a href="/articles/why-public-servants-dont-change/">転職したいが動けない</a></li>
           <li><a href="/articles/local-government-market-value">市場価値を知る</a></li>
           <li><a href="/articles/local-government-job-view-first">求人を見てみる</a></li>

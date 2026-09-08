@@ -65,6 +65,7 @@ nav a:hover {
 }
 
 .site-menu {
+  display: none;
   margin-left: auto;
 }
 
@@ -643,7 +644,9 @@ footer {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1100px) {
+  .desktop-nav { display: none; }
+  .site-menu { display: block; }
   .header-inner {
     align-items: center;
     padding: 14px 0;
@@ -703,6 +706,9 @@ footer {
     border-bottom: 1px solid #eef1f3;
   }
 
+}
+
+@media (max-width: 760px) {
   .hero {
     padding: 54px 0 60px;
   }
@@ -765,4 +771,33 @@ footer {
   .footer-nav {
     grid-template-columns: 1fr;
   }
+}
+
+/* Keyboard access and narrow-screen readability. */
+:focus-visible { outline: 3px solid #b26b0b; outline-offset: 4px; }
+[id] { scroll-margin-top: 100px; }
+.skip-link { position: fixed; top: 8px; left: 12px; z-index: 100; transform: translateY(-150%); background: #fff; color: #17202a; padding: 10px 16px; }
+.skip-link:focus { transform: translateY(0); }
+.desktop-nav { gap: 14px; }
+.desktop-nav a { padding: 12px 0; }
+nav a[aria-current="page"] { color: #1f4f7a; font-weight: 700; text-decoration: underline; text-underline-offset: 5px; }
+.page-meta { max-width: 850px; padding-top: 24px; font-size: 13px; color: #5b6672; }
+.editorial-note { max-width: 850px; border-top: 1px solid #e1e5e9; padding: 20px 0 32px; font-size: 13px; color: #5b6672; }
+.editorial-note p { margin: 8px 0 0; }
+.editorial-note a { color: #1f4f7a; }
+.next-options { margin-top: 16px; }
+.next-options a { border-color: #c9d3dc; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; }
+.comparison-table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+.comparison-table th, .comparison-table td { border: 1px solid #dfe4e8; padding: 14px; text-align: left; vertical-align: top; }
+.comparison-table th { background: #f4f6f8; }
+.comparison-table caption { text-align: left; font-weight: 700; margin-bottom: 12px; }
+.source-list li { font-size: 14px; }
+.source-list span { color: #5b6672; }
+@media (max-width: 760px) {
+  .site-menu[open] { position: relative; }
+  .cta { padding: 24px; }
+  .cta .button, .ad-card .button { white-space: normal; }
+  .hero h1 { font-size: clamp(30px, 8vw, 38px); }
+  .article h1 { font-size: clamp(28px, 7.3vw, 34px); overflow-wrap: anywhere; }
 }

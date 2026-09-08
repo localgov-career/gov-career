@@ -1,216 +1,87 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import KeyPoints from "../../components/KeyPoints.astro";
-
+import SourceList from "../../components/SourceList.astro";
 const services = [
   {
-    name: "リクルートエージェント",
-    type: "総合エージェント",
-    url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680702",
-    officialUrl: "https://www.r-agent.com/",
-    trackingPixel: "//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3778687&pid=892680702",
-    actionText: "無料登録ページを見る",
-    emphasis: "求人紹介",
-    isPrimary: true,
-    fit: "初めて民間転職を考える人、求人紹介と書類・面接対策をまとめて受けたい人",
-    admin: "全般、企画・政策、財務・会計、総務・人事、情報・DX、土木・建築",
-    point: "幅広い業界・職種の求人を見ながら、公務員経験を職務経歴書に落とし込む入口にしやすいサービスです。"
+    name: "リクルートエージェント", type: "総合エージェント",
+    url: "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680702",
+    officialUrl: "https://www.r-agent.com/", sourceUrl: "https://www.r-agent.com/",
+    fee: "会員登録無料", approach: "公開求人を検索し、求人紹介・転職支援も検討する",
+    condition: "希望職種・勤務地の求人内容と応募条件を個別に確認する",
+    fit: "候補となる業界や職種を広く調べたい人",
+    caution: "公開求人数の多さだけで、公務員経験に合う求人があるとは判断できません。",
+    sourceLabel: "公式サイト：無料登録・公開求人検索", advertised: true
   },
   {
-    name: "ビズリーチ",
-    type: "ハイクラス・スカウト",
-    url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892687895",
-    officialUrl: "https://www.bizreach.jp/",
-    trackingPixel: "",
-    actionText: "公式情報を見る",
-    emphasis: "公式情報",
-    isPrimary: false,
-    fit: "管理職経験、専門性、企画・マネジメント経験を市場で試したい人",
-    admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
-    point: "職務経歴を登録してスカウトを受けることで、自分の経験がどの企業に評価されるかを確認しやすいサービスです。"
+    name: "ビズリーチ", type: "スカウト・求人検索",
+    url: "https://www.bizreach.jp/", officialUrl: "https://www.bizreach.jp/", sourceUrl: "https://www.bizreach.jp/faq/",
+    fee: "無料プランと有料プランあり", approach: "企業・ヘッドハンターのスカウト、求人検索・応募",
+    condition: "登録後に独自基準の審査あり。日本国内向けで、日本語でのやりとりが必要",
+    fit: "経験を整理し、企業やヘッドハンターからの反応を確認したい人",
+    caution: "無料・有料で利用機能が異なります。プロフィールの公開範囲とブロック設定も確認しましょう。",
+    sourceLabel: "公式FAQ：プラン・審査・情報公開", advertised: false
   },
   {
-    name: "JAC Recruitment",
-    type: "ハイクラス・専門職エージェント",
-    url: "//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3778687&pid=892680704",
-    officialUrl: "https://www.jac-recruitment.jp/",
-    trackingPixel: "",
-    actionText: "公式情報を見る",
-    emphasis: "公式情報",
-    isPrimary: false,
-    fit: "管理職、専門職、技術職、外資・グローバル企業も含めて相談したい人",
-    admin: "企画・政策、財務・会計、情報・DX、土木・建築、管理職、専門職",
-    point: "ミドル・ハイクラスや専門職領域を中心に、職務経歴を整理しながら求人紹介を受けたい場合に検討しやすいサービスです。"
+    name: "JAC Recruitment", type: "ハイクラス・専門職エージェント",
+    url: "https://www.jac-recruitment.jp/", officialUrl: "https://www.jac-recruitment.jp/", sourceUrl: "https://www.jac-recruitment.jp/faq/",
+    fee: "求職者の利用料無料", approach: "コンサルタントによる求人紹介・転職支援",
+    condition: "紹介可能な求人が用意できた時点で順次連絡。海外在住の場合は国・希望条件による制約あり",
+    fit: "管理職や専門分野の経験をもとに相談したい人",
+    caution: "経験・希望によっては求人紹介や支援を受けられない場合があります。",
+    sourceLabel: "公式FAQ：費用・連絡・海外在住者の利用", advertised: false
   }
 ];
-
-const routes = [
-  ["企画・政策", "総合エージェント", "事業企画、公共領域コンサル、BtoG企業の求人を広く見る"],
-  ["財務・会計", "総合エージェント", "経理、財務、経営管理、管理部門求人を見る"],
-  ["税務・徴収", "リクルートエージェント", "金融、審査、債権管理、コンプライアンス職を確認する"],
-  ["福祉・介護・保健", "リクルートエージェント", "ヘルスケア、介護、福祉、人材、カスタマーサクセスを広く見る"],
-  ["情報・DX", "総合エージェント", "IT企画、DX推進、自治体向けSaaS求人を探す"],
-  ["土木・建築", "総合エージェント", "建設、インフラ、不動産、発注者支援の求人を見る"],
-  ["管理職・専門職", "求人紹介を起点に、必要に応じてスカウト型も確認", "職務経歴の見せ方と年収レンジを確認する"]
-];
-
-const purposes = [
-  {
-    title: "初めて民間転職を考える",
-    services: "リクルートエージェント",
-    reason: "求人紹介、職務経歴書、面接対策をまとめて相談しやすい"
-  },
-  {
-    title: "まず市場価値を知りたい",
-    services: "求人紹介",
-    reason: "面談や求人票を通じて、自分の経験がどの職種・年収帯に見えるか確認しやすい"
-  },
-  {
-    title: "管理職・専門職経験を試したい",
-    services: "求人紹介 + 公式情報",
-    reason: "まず候補職種を確認し、必要に応じてスカウト型・専門職向けサービスも比較しやすい"
-  },
-  {
-    title: "公共領域・BtoG企業を見たい",
-    services: "求人紹介",
-    reason: "公共系企業、自治体向けSaaS、コンサル、官民連携領域の求人を広く探しやすい"
-  },
-  {
-    title: "福祉・保健・介護経験を広く見たい",
-    services: "リクルートエージェント",
-    reason: "ヘルスケア、介護、福祉、人材、カスタマーサクセスなど候補を相談しやすい"
-  },
-  {
-    title: "土木・建築・インフラ経験を活かしたい",
-    services: "求人紹介",
-    reason: "建設、インフラ、発注者支援、PPP/PFI、施設管理領域を幅広く確認しやすい"
-  }
-];
-
-const comparison = [
-  ["求人紹介を受ける", "強い", "サービス内で接点あり", "強い"],
-  ["スカウトを受ける", "あり", "強い", "求人紹介中心"],
-  ["初めての転職相談", "向いている", "経験整理後に向く", "経験整理後に向く"],
-  ["管理職・専門職", "求人次第", "向いている", "向いている"],
-  ["市場価値確認", "求人紹介で確認", "スカウトで確認", "専門エージェントへの相談で確認"]
-];
+const sources = services.map(service => ({title: service.sourceLabel, publisher: service.name, url: service.sourceUrl}));
+sources.push({title:"サービス紹介：支援対象と紹介条件", publisher:"JAC Recruitment", url:"https://www.jac-recruitment.jp/service/"});
 ---
-<BaseLayout title="転職サービス比較" description="地方公務員の行政経験を民間キャリアにつなげるための主要転職サービス比較。総合型、スカウト型、行政経験別の使い分けを整理します。">
-<div class="container article">
-  <p class="eyebrow">SERVICES</p>
-  <h1>地方公務員向け<br />転職サービス比較</h1>
-  <p class="lead">地方公務員から民間企業への転職では、求人紹介だけでなく「経験の棚卸し」と「職種の翻訳」が重要です。まずは大手サービスで求人の幅を確認し、自分の行政経験がどの職種に接続するかを見ていきます。</p>
-
-  <KeyPoints title="このページで選べること" points={[
-    "初めての転職相談で使いやすいサービスを確認する",
-    "行政経験別に、どのサービスで確認しやすいかを見る",
-    "登録後に求人票で確認すべきポイントを整理する"
-  ]} />
-
-  <div class="notice"><strong>掲載方針：</strong>このページには広告リンクを含みます。主ボタンは登録・申込み導線、各カード内の小さなリンクは公式情報への確認導線です。</div>
-
-  <h2>掲載サービスの選定基準</h2>
-  <p>このページでは、地方公務員が民間転職を検討するときに、求人票、スカウト、職務経歴書の整理に使いやすいサービスを中心に掲載しています。単に求人数が多いかだけでなく、行政経験を民間企業の職種名やスキル名に置き換えやすいかを重視しています。</p>
-  <ul>
-    <li>初めて民間転職を考える人でも情報収集に使いやすい</li>
-    <li>企画、調整、予算、制度運用、DX、土木・建築などの行政経験と接点がある</li>
-    <li>求人票やスカウトを通じて、自分の市場価値を確認しやすい</li>
-    <li>職務経歴書や面接で、行政経験をどう伝えるか考える材料になる</li>
-  </ul>
-  <p>広告提携の有無にかかわらず、読者に過度な登録を促す表現は避け、転職を決める前の比較・検討に役立つ情報整理を優先します。提携審査中または未提携のサービスについては、必要に応じて公式情報への確認導線として掲載する場合があります。</p>
-
-  <h2>登録は、転職を決めることではない</h2>
-  <p>公務員は、民間の転職サービスに登録した経験がない人も少なくありません。そのため「登録したら、すぐ応募しなければいけない」「職場に知られるのではないか」と不安になりやすいところがあります。</p>
-  <p>しかし最初の目的は、転職を決めることではなく情報収集です。求人票やエージェントとの面談に触れることで、行政経験が民間ではどの職種名・スキル名で表現されるのかが見えてきます。</p>
-  <div class="grid-list">
-    <a href="#major-services"><b>求人票を見る</b><span>必要経験、年収帯、職種名から自分との差分を知る</span></a>
-    <a href="#major-services"><b>求人紹介を受ける</b><span>企画、調整、管理職、専門性がどう評価されるか確認する</span></a>
-    <a href="#before-register"><b>職務経歴を言語化する</b><span>担当業務を、課題・行動・成果の言葉に置き換える</span></a>
-  </div>
-
-  <h2>迷ったらこの組み合わせ</h2>
-  <p>地方公務員から民間を考える場合、まずは総合エージェントで求人の幅を見るのが始めやすい流れです。特に初めて転職サービスを使う場合は、求人紹介を受けながら、職務経歴書や面接対策まで相談できるサービスを起点にすると進めやすくなります。</p>
-  <div class="grid-list">
-    <a href="#major-services"><b>まず情報収集したい</b><span>リクルートエージェント</span></a>
-    <a href="#major-services"><b>求人票を見ながら整理したい</b><span>求人紹介を受けられる総合エージェント</span></a>
-    <a href="#major-services"><b>管理職・専門性も気になる</b><span>必要に応じてスカウト型や専門職向けサービスも確認</span></a>
-    <a href="#before-register"><b>まだ登録が不安</b><span>先に職務経歴書の見出しだけ作る</span></a>
-  </div>
-
-  <h2>目的別に選ぶ</h2>
-  <p>行政経験は、部署名だけでは民間企業に伝わりにくいことがあります。まず「何を確認したいのか」を決めてからサービスを選ぶと、登録後の迷いが減ります。</p>
-  <div class="grid-list">
-    {purposes.map((purpose) => (
-      <a href="#major-services">
-        <b>{purpose.title}</b>
-        <span>{purpose.services} / {purpose.reason}</span>
-      </a>
-    ))}
-  </div>
-
-  <h2 id="major-services">まず登録候補にしやすい大手サービス</h2>
-  <p>迷う場合は、まず求人紹介と面談に触れてみると判断材料が増えます。スカウト型や専門職向けサービスは、職務経歴が整理できてから補助的に確認する使い方が向いています。</p>
-
-  {services.map((service) => (
-    <section class="service-card">
-      <div>
-        <span class="tag">{service.type}</span>
-        <span class:list={["tag", service.isPrimary ? "primary-tag" : "sub-tag"]}>{service.emphasis}</span>
-        <h2>{service.name}</h2>
-        <p>{service.point}</p>
-        <p class="small"><strong>向いている人：</strong>{service.fit}</p>
-        <p class="small"><strong>つながりやすい行政経験：</strong>{service.admin}</p>
-      </div>
-      <div class="service-actions">
-        <a class:list={["button", !service.isPrimary && "button-secondary"]} href={service.isPrimary ? service.url : service.officialUrl} rel={service.isPrimary ? "nofollow" : undefined}>
-          {service.trackingPixel && (
-            <img class="tracking-pixel" src={service.trackingPixel} height="1" width="1" alt="" />
-          )}
-          {service.actionText}
-        </a>
-        <a class="text-link" href={service.officialUrl}>公式情報</a>
-      </div>
-    </section>
-  ))}
-
-  <h2>主要サービスの比較</h2>
-  <p>サービスごとに得意な使い方が違います。初めての人は求人紹介、初回相談、職務経歴書の整理を受けやすいサービスから確認すると進めやすくなります。</p>
-  <div class="grid-list">
-    {comparison.map(([theme, recruit, bizreach, jac]) => (
-      <a href="#major-services">
-        <b>{theme}</b>
-        <span>リクルートエージェント: {recruit} / ビズリーチ: {bizreach} / JAC Recruitment: {jac}</span>
-      </a>
-    ))}
-  </div>
-
-  <h2>行政経験別の使い分け</h2>
-  <p>部署名そのものよりも、経験を民間職種に翻訳したうえでサービスを選ぶと、求人検索やスカウトの精度が上がります。</p>
-  <div class="grid-list">
-    {routes.map(([department, service, use]) => (
-      <a href="/articles/skill-map/">
-        <b>{department}</b>
-        <span>{service} / {use}</span>
-      </a>
-    ))}
-  </div>
-
-  <h2>登録後に見るべきポイント</h2>
-  <p>登録して終わりではなく、求人票やスカウトから「自分の経験がどう見られているか」を確認します。</p>
-  <ul>
-    <li>行政経験が、どの職種名に置き換えられているか</li>
-    <li>年収、勤務地、働き方の条件が現実的か</li>
-    <li>公共領域、BtoG、DX、福祉、インフラなど近い領域の求人があるか</li>
-    <li>職務経歴書で伝わりにくい経験がどこか</li>
-    <li>今すぐ転職するのか、学習してから動くのか</li>
-  </ul>
-
-  <h2 id="before-register">登録前に整理しておくこと</h2>
-  <div class="grid-list">
-    <a href="/articles/local-government-resume"><b>職務経歴書の土台を作る</b><span>担当業務ではなく、課題・行動・成果で整理する</span></a>
-    <a href="/articles/local-government-market-value"><b>市場価値を確認する</b><span>求人票とスカウトから評価される経験を探す</span></a>
-    <a href="/articles/local-government-job-view-first"><b>求人を見るだけから始める</b><span>転職を決める前に選択肢を増やす</span></a>
-    <a href="/learning/"><b>不足する専門性を学ぶ</b><span>現職継続と転職準備の両方に効く資格・書籍を見る</span></a>
-  </div>
+<BaseLayout title="地方公務員向け転職サービス比較：費用・利用条件・選び方" description="リクルートエージェント、ビズリーチ、JAC Recruitmentの費用・利用方法・条件を公式情報で比較。登録せずに求人を調べる方法も紹介します。" updatedDate="2026-09-06">
+<article class="container article">
+<p class="eyebrow">SERVICES</p>
+<h1>転職サービスを、目的と条件で比較する</h1>
+<p class="lead">まず求人を調べたいのか、経験を整理して相談したいのか。必要な支援を決めてから、費用や利用条件を比べましょう。転職を決める前の情報収集から始められます。</p>
+<div class="notice"><strong>広告について：</strong>リクルートエージェントの「登録ページを見る（広告）」には広告リンクを使用しています。公式情報の確認リンクは広告リンクと分けて表示しています。</div>
+<h2>登録せずに、まず仕事内容を調べる</h2>
+<p>候補職種が決まっていなければ、<a href="https://www.r-agent.com/">公式サイトの公開求人</a>や企業の採用ページで、仕事内容・必須経験・勤務地を確認できます。気になる求人を三つ選び、「経験が合う点」「学ぶ必要がある点」を書き出してみましょう。</p>
+<div class="grid-list">
+<a href="/articles/skill-map/"><b>経験を先に整理する</b><span>部署名を業務やスキルに分解する</span></a>
+<a href="/articles/current-role-growth/"><b>現職で経験を積む</b><span>今の仕事で試せる改善を考える</span></a>
 </div>
+<h2 id="comparison">費用・利用方法・条件を比べる</h2>
+<p>公式情報の確認日：<time datetime="2026-09-06">2026年9月6日</time>。以下はサービスの優劣や転職成功率のランキングではありません。提供内容は変更されるため、利用前に各社の案内を確認してください。</p>
+<div class="table-scroll" role="region" aria-label="転職サービス比較表（横スクロール可能）" tabindex="0">
+<table class="comparison-table">
+<caption>主要3サービスの比較</caption>
+<thead><tr><th scope="col">確認項目</th>{services.map(service => <th scope="col">{service.name}</th>)}</tr></thead>
+<tbody>
+<tr><th scope="row">費用</th>{services.map(service => <td>{service.fee}</td>)}</tr>
+<tr><th scope="row">利用方法</th>{services.map(service => <td>{service.approach}</td>)}</tr>
+<tr><th scope="row">利用・紹介条件</th>{services.map(service => <td>{service.condition}</td>)}</tr>
+<tr><th scope="row">根拠</th>{services.map(service => <td><a href={service.sourceUrl}>{service.sourceLabel}</a></td>)}</tr>
+</tbody>
+</table>
+</div>
+<h2 id="major-services">自分に合う使い方と注意点</h2>
+<p>以下の「検討する目的」は、公式のサービス内容をもとにした当サイトの提案です。公務員向けの転職実績や採用可能性を保証するものではありません。</p>
+{services.map(service => (
+<section class="service-card">
+<div><p class="tag">{service.type}</p><h3>{service.name}</h3>
+<p><strong>検討する目的：</strong>{service.fit}</p>
+<p><strong>注意点：</strong>{service.caution}</p></div>
+<div class="service-actions">
+<a class="button" href={service.url} rel={service.advertised ? "nofollow sponsored" : undefined}>{service.advertised ? "登録ページを見る（広告）" : "公式サイトを見る"}</a>
+<a class="text-link" href={service.sourceUrl}>条件・公式情報を確認する</a>
+</div>
+</section>
+))}
+<h2 id="before-register">登録・相談前に整理すること</h2>
+<ul>
+<li><strong>相談の目的：</strong>今すぐ応募したいのか、まず候補職種を知りたいのか。</li>
+<li><strong>希望条件：</strong>勤務地、働き方、仕事内容など、優先する項目と相談できる項目。</li>
+<li><strong>担当経験：</strong>業務名だけでなく、自分の役割・行動・確認できた成果。</li>
+<li><strong>情報公開：</strong>経歴を誰が閲覧できるか、公開範囲や連絡方法をどう設定するか。</li>
+<li><strong>支援が合わない場合：</strong>条件を見直す、他の求人を調べる、現職で経験を積むなど次の選択肢。</li>
+</ul>
+<p><a href="/articles/local-government-resume/">職務経歴書の土台を作る</a> · <a href="/learning/">不足する専門性を学ぶ</a></p>
+<SourceList sources={sources} />
+</article>
 </BaseLayout>

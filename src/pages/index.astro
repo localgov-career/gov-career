@@ -1,6 +1,28 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
+
+type NotePost = { title: string; link: string; date: string };
+let notePosts: NotePost[] = [];
+try {
+  const res = await fetch("https://note.com/local_govcareer/rss");
+  const xml = await res.text();
+  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].slice(0, 3);
+  notePosts = items
+    .map((m) => {
+      const block = m[1];
+      const pick = (tag: string) =>
+        (block.match(new RegExp(`<${tag}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?</${tag}>`))?.[1] ?? "").trim();
+      const d = new Date(pick("pubDate"));
+      const date = isNaN(d.getTime())
+        ? ""
+        : `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+      return { title: pick("title"), link: pick("link"), date };
+    })
+    .filter((p) => p.title && p.link);
+} catch {
+  notePosts = [];
+}
 ---
 <BaseLayout title="地方公務員から民間企業への転職" description="公務員のキャリアは辞めるか残るかだけではありません。行政経験を資産化し、民間転職、現職継続、学習など将来の選択肢を増やすためのキャリアメディアです。">
 <section class="hero">
@@ -46,6 +68,21 @@ import CTA from "../components/CTA.astro";
 <a href="/learning/"><b>資格・書籍から探す</b><span>経験に専門性を足す</span></a>
 </div>
 </section>
+
+{notePosts.length > 0 && (
+<section class="container section">
+<div class="section-head">
+<p class="eyebrow">NOTE ESSAYS</p>
+<h2>noteの新着エッセイ</h2>
+</div>
+<div class="grid-list">
+{notePosts.map((p) => (
+<a href={p.link} target="_blank" rel="noopener"><b>{p.title}</b><span>{p.date}</span></a>
+))}
+</div>
+<p><a href="https://note.com/local_govcareer" target="_blank" rel="noopener">note「地方公務員キャリア」を読む</a></p>
+</section>
+)}
 
 <section class="container section">
 <p><a href="/blog/site-purpose/">このサイトの目的</a> · <a href="/articles/public-demand-restructuring/">将来の行政変化を知る</a></p>
